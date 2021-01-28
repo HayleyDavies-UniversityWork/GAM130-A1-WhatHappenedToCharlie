@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ArrayTools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,12 +16,19 @@ public class SlidingPuzzle : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        puzzleBoard = SetupBoard(puzzleBoard);
+        puzzleBoardSolution = SetupBoard(puzzleBoardSolution);
         DisplayBoard();
     }
 
     // Update is called once per frame
     void Update() {
 
+    }
+
+    SlidingPuzzleBoard SetupBoard(SlidingPuzzleBoard board) {
+        board.board2d = Array1D.Convert2D<Sprite>(board.board1d, boardSize);
+        return board;
     }
 
     void DisplayBoard() {
@@ -44,15 +52,17 @@ public class SlidingPuzzle : MonoBehaviour {
         newObject.name = "Sliding Puzzle Canvas";
         newObject.transform.parent = transform;
         Canvas newCanvas = newObject.AddComponent<Canvas>();
+        newObject.AddComponent<GraphicRaycaster>();
         newCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
         return newCanvas;
     }
 
     void CreateNewTile(int x, int y, Canvas canvas) {
-        if (puzzleBoard.board[y].row[boardSize - x - 1] == null)
+        if (puzzleBoard.board2d[x, y] == null)
             return;
-        int xOffset = (boardSize / 2) - x;
+
+        int xOffset = -(boardSize / 2) + x;
         int yOffset = (boardSize / 2) - y;
 
         Vector2 position = new Vector2(xOffset * drawTileSize, yOffset * drawTileSize);
@@ -61,8 +71,13 @@ public class SlidingPuzzle : MonoBehaviour {
         newTile.name = $"Sliding Puzzle Tile ({x}, {y})";
 
         Button newButton = newTile.GetComponent<Button>();
+        newButton.onClick.AddListener(ClickTileButton);
 
         Image newImage = newTile.GetComponent<Image>();
-        newImage.sprite = puzzleBoard.board[y].row[boardSize - x - 1]; // this is meant to be (y, x) but it broke, not sure why (:
+        newImage.sprite = puzzleBoard.board2d[x, y];
+    }
+
+    public void ClickTileButton() {
+        Debug.Log("2");
     }
 }
