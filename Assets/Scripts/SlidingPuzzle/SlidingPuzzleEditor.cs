@@ -7,13 +7,13 @@ using UnityEngine;
 [CustomPropertyDrawer(typeof(SlidingPuzzleBoard))]
 public class SlidingPuzzleEditor : PropertyDrawer {
     // set the label height
-    float labelHeight = 18f;
+    float labelHeight = 22f;
 
     // set the sprite height
     float spriteHeight = 50f;
 
     // set the data size (figuring out how to change this value to other numbers)
-    [Range(3, 10)] int dataSize;
+    [Range(3, 60)] int dataSize;
 
     // min and max baord sizes
     readonly int MIN_BOARD_SIZE = 3;
@@ -23,8 +23,6 @@ public class SlidingPuzzleEditor : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         // create a variable to store new positions and set the height to the label height
         Rect newPosition = position;
-
-        Debug.Log(property);
 
         // get the boardSize varible from SlidingPuzzleBoard
         SerializedProperty boardSize = property.FindPropertyRelative("boardSize");
@@ -37,7 +35,7 @@ public class SlidingPuzzleEditor : PropertyDrawer {
         dataSize = boardSize.intValue;
 
         // increment the newPosition.y by labelHeight (draws on the line below)
-        newPosition.y += labelHeight * 2;
+        newPosition.y += labelHeight;
 
         // get the value of "board" from the class
         SerializedProperty data = property.FindPropertyRelative("board");
@@ -69,7 +67,7 @@ public class SlidingPuzzleEditor : PropertyDrawer {
             newPosition.y += spriteHeight;
         }
 
-        // add the label height to the y position
+        // increment the newPosition.y by labelHeight (draws on the line below)
         newPosition.y += labelHeight;
     }
 
