@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using ArrayTools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,26 +8,21 @@ public class SlidingPuzzle : MonoBehaviour {
 
     public float drawTileSize;
 
+    [Range(3, 6)] public int boardSize = 3;
+
     public SlidingPuzzleBoard puzzleBoard;
     public SlidingPuzzleBoard puzzleBoardSolution;
 
-    private int boardSize = 3;
-
     // Start is called before the first frame update
     void Start() {
-        puzzleBoard = SetupBoard(puzzleBoard);
-        puzzleBoardSolution = SetupBoard(puzzleBoardSolution);
+        puzzleBoard.SetupBoard();
+        puzzleBoardSolution.SetupBoard();
         DisplayBoard();
     }
 
     // Update is called once per frame
     void Update() {
 
-    }
-
-    SlidingPuzzleBoard SetupBoard(SlidingPuzzleBoard board) {
-        board.board2d = Array1D.Convert2D<Sprite>(board.board1d, boardSize);
-        return board;
     }
 
     void DisplayBoard() {
@@ -62,7 +56,7 @@ public class SlidingPuzzle : MonoBehaviour {
         if (puzzleBoard.board2d[x, y] == null)
             return;
 
-        int xOffset = -(boardSize / 2) + x;
+        int xOffset = x - (boardSize / 2);
         int yOffset = (boardSize / 2) - y;
 
         Vector2 position = new Vector2(xOffset * drawTileSize, yOffset * drawTileSize);
