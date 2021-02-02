@@ -30,4 +30,15 @@ public static class ArrayExtensions {
         // return the 2d array
         return array2d;
     }
+    public static T[] Convert1D<T>(this T[, ] array2d) {
+        T[] array1d = new T[array2d.Length];
+
+        int i = 0;
+        foreach (T item in array2d) {
+            array1d[i] = item;
+            i++;
+        }
+
+        return array1d;
+    }
 }
