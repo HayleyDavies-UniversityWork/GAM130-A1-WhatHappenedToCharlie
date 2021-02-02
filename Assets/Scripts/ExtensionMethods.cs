@@ -30,6 +30,7 @@ public static class ArrayExtensions {
         // return the 2d array
         return array2d;
     }
+
     public static T[] Convert1D<T>(this T[, ] array2d) {
         T[] array1d = new T[array2d.Length];
 

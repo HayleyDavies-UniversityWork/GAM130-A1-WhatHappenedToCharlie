@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4296623658918452035}
   - component: {fileID: 4296623658918452032}
   - component: {fileID: 4296623658918452033}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SlidingPuzzleTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

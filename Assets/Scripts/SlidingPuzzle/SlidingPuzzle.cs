@@ -15,8 +15,8 @@ public class SlidingPuzzle : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        puzzleBoard.SetupBoard();
-        puzzleBoardSolution.SetupBoard();
+        puzzleBoard.SetupBoard(boardSize);
+        puzzleBoardSolution.SetupBoard(boardSize);
         DisplayBoard();
     }
 
