@@ -2763,8 +2763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86763833d3a08a642b8b1fefaee5a10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartItem: {fileID: 2021607654}
-  SwapItem: {fileID: 1441441114530490, guid: 8c8b047a2c0cdf442a97847b15e17227, type: 3}
+  StartItems: []
+  SwapItem: []
 --- !u!4 &1364279774
 Transform:
   m_ObjectHideFlags: 0
@@ -3741,12 +3741,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2021607654 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1746666649657486, guid: 0547e5926fd68ea4993c6af3be8769e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 134258781}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2095458730
 PrefabInstance:
   m_ObjectHideFlags: 0
