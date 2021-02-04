@@ -8,11 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speedRot = 10f;
     private Vector3 movement = Vector3.zero;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
