@@ -2,45 +2,46 @@
 using System.Collections.Generic;
 using InventorySystem;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace InteractionSystem {
     public enum InteractionType {
-        Inventory
+        Pickup,
+        OpenPuzzle
     }
 
     public class Interactable : MonoBehaviour {
 
-        public InteractionType interactionType = InteractionType.Inventory;
+        public InteractionType interactionType = InteractionType.Pickup;
 
-        public delegate void Interact(GameObject self);
-        public Interact interact = null;
+        public UnityAction interact;
 
         // Start is called before the first frame update
         void Start() {
             switch (interactionType) {
-                case InteractionType.Inventory:
-                    interact = InventoryInteraction(gameObject);
+                case InteractionType.Pickup:
+                    interact += PickupInteraction;
+                    break;
+                case InteractionType.OpenPuzzle:
+                    interact += OpenPuzzleInteraction;
                     break;
             }
         }
 
-        // Update is called once per frame
-        void Update() {
-
-        }
-
         /// <summary>
-        /// InventoryInteraction handles interactions with inventory items
+        /// PickupInteraction handles interactions with inventory items
         /// </summary>
-        public Interact InventoryInteraction(GameObject self) {
+        void PickupInteraction() {
             // get the item
-            InventoryItem item = self.GetComponent<InventoryObject>().item;
+            InventoryItem item = GetComponent<InventoryObject>().item;
             // add the item to the inventory
             Inventory.Add(item);
             // destory the collider object
-            Destroy(self);
+            Destroy(this.gameObject);
+        }
 
-            return null;
+        void OpenPuzzleInteraction() {
+
         }
     }
 }

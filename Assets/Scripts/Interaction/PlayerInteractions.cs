@@ -30,7 +30,7 @@ namespace InteractionSystem {
                 // get the tag of the collider
                 string tag = currentCollider.tag;
 
-                currentCollider.GetComponent<Interactable>().interact.Invoke(currentCollider.gameObject);
+                currentCollider.GetComponent<Interactable>().interact.Invoke();
             }
         }
 
