@@ -52,7 +52,7 @@ public class PlayerInteractions : MonoBehaviour {
         // get the item
         InventoryItem item = currentCollider.GetComponent<InventoryObject>().item;
         // add the item to the inventory
-        //Inventory.Add(item);
+        Inventory.Add(item);
         // destory the collider object
         Destroy(currentCollider.gameObject);
     }
