@@ -25,6 +25,7 @@ namespace InventorySystem {
             SphereCollider sc = gameObject.AddComponent<SphereCollider>();
             sc.center = Vector3.zero;
             sc.radius = interactableRange;
+            sc.isTrigger = true;
         }
     }
 }
