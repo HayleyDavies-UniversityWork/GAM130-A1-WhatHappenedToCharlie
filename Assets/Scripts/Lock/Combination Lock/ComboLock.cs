@@ -10,6 +10,7 @@ namespace CombinationLock {
         // Start is called before the first frame update
         void Start() {
             comboLock = new WholeLock(comboLockObject);
+            RenderComboLock();
         }
 
         // Update is called once per frame
