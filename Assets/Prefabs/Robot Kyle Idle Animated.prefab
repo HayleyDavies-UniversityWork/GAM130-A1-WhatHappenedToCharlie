@@ -891,11 +891,11 @@ GameObject:
   - component: {fileID: -7209731330946266459}
   - component: {fileID: 1094856637}
   - component: {fileID: 1094856634}
-  - component: {fileID: 1094856635}
   - component: {fileID: 1094856636}
+  - component: {fileID: 906581867}
   m_Layer: 0
   m_Name: Robot Kyle Idle Animated
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -985,18 +985,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.99, z: 0}
---- !u!114 &1094856635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3452350949280923542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac23ce94083037459f9cfd047cae23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1094856636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,7 +998,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 1
-  speedRot: 100
+  speedRot: 150
+--- !u!114 &906581867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452350949280923542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86763833d3a08a642b8b1fefaee5a10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartItems:
+  - {fileID: 0}
+  SwapItem:
+  - {fileID: 3106490161476339776, guid: 9ce63ec1114510e418402af21a2b3534, type: 3}
 --- !u!1 &3455822213366944906
 GameObject:
   m_ObjectHideFlags: 0
