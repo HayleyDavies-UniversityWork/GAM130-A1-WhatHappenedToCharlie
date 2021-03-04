@@ -7,17 +7,25 @@ namespace CombinationLock {
         public ComboLockObject comboLockObject;
         WholeLock comboLock;
 
-        public List<GameObject> locks;
+        public List<GameObject> dials;
 
         // Start is called before the first frame update
         void Start() {
             comboLock = new WholeLock(comboLockObject);
+            InitializeLocks();
             //RenderComboLock();
         }
 
         // Update is called once per frame
         void Update() {
 
+        }
+
+        void InitializeLocks() {
+            for (int i = 0; i < dials.Count; i++) {
+                RotationDriveMode = comboLockObject.
+                dials[i].transform.rotation
+            }
         }
     }
 }
