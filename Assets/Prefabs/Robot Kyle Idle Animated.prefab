@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 2639925533763134764}
   - component: {fileID: 2533379467765146125}
   - component: {fileID: -7209731330946266459}
+  - component: {fileID: 535315172419523402}
   - component: {fileID: 1094856637}
   - component: {fileID: 1094856634}
   - component: {fileID: 1094856636}
@@ -951,6 +952,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2533379467765146125}
+--- !u!65 &535315172419523402
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452350949280923542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.91, z: 0.24}
 --- !u!54 &1094856637
 Rigidbody:
   m_ObjectHideFlags: 0

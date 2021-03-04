@@ -28,8 +28,6 @@ namespace InteractionSystem {
             // if the current collider has been set
             if (currentCollider != null) {
                 // get the tag of the collider
-                string tag = currentCollider.tag;
-
                 currentCollider.GetComponent<Interactable>().interact.Invoke();
             }
         }
@@ -39,8 +37,10 @@ namespace InteractionSystem {
         /// </summary>
         /// <param name="other">The other Collider involved in this collision.</param>
         void OnTriggerEnter(Collider other) {
-            // set the current collider collider triggered
-            currentCollider = other;
+            if (other.CompareTag("Interactable")) {
+                // set the current collider collider triggered
+                currentCollider = other;
+            }
         }
 
         /// <summary>

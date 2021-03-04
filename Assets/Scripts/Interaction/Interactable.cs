@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using InventorySystem;
+using Puzzles;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +16,8 @@ namespace InteractionSystem {
         public InteractionType interactionType = InteractionType.Pickup;
 
         public UnityAction interact;
+
+        public GameObject puzzle;
 
         // Start is called before the first frame update
         void Start() {
@@ -41,7 +44,7 @@ namespace InteractionSystem {
         }
 
         void OpenPuzzleInteraction() {
-
+            puzzle.SetActive(true);
         }
     }
 }
