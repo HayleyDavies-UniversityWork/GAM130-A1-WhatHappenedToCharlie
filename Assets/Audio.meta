@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: d1a71a9ed28115140839389da4c5e79c
+<<<<<<< HEAD:Assets/Imported Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior.meta
+guid: 949e6d78b0c7d104dbecbf0c1b57844a
+=======
+guid: 4c326acf144a7094f998f5b8fda369ac
+>>>>>>> 42570d26866c507f46a8c56e52182ec6650c46b4:Assets/Audio.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
