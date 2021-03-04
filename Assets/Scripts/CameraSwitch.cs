@@ -33,26 +33,36 @@ public class CameraSwitch : MonoBehaviour
     private void OnTriggerExit(Collider col)
     {
 
+        
+
+
         if (col.gameObject.CompareTag("Player"))
         {
+            
+
             //Detecting to which camera next switch should be
             if(CurrentCamera == Cameras[1])
             {
                 PreviousCameraSwitch();
+                
             }
             else
             {
                 NextCameraSwitch();
+                
             }
 
             //TEST: When player leaves Bedroom items will be swapped
-            if(CurrentCamera.name != "BedroomCamera")
+            if (CurrentCamera.name != "BedroomCamera")
             {
                 EventHandler.GetComponent<ItemSwap>().SwapItems();
-            }
+            }  
+       
         }
-        
-    }
 
+        
+    
+    
+    }
 
 }
