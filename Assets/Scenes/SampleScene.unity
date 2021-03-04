@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentCamera: {fileID: 0}
   Cameras: []
+  EventHandler: {fileID: 0}
 --- !u!1001 &197950766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1676,6 +1677,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &906581859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3452350949280923542, guid: f36fd2ef811fb6348bb5a26558d80c74,
+    type: 3}
+  m_PrefabInstance: {fileID: 1440094005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &918519196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2902,14 +2909,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1094856636, guid: f36fd2ef811fb6348bb5a26558d80c74, type: 3}
-      propertyPath: speedRot
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094856636, guid: f36fd2ef811fb6348bb5a26558d80c74, type: 3}
-      propertyPath: playerSpeed
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 906581867, guid: f36fd2ef811fb6348bb5a26558d80c74, type: 3}
+      propertyPath: StartItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 1348628362}
     - target: {fileID: 2639925533763134764, guid: f36fd2ef811fb6348bb5a26558d80c74,
         type: 3}
       propertyPath: m_RootOrder
@@ -2968,11 +2971,6 @@ PrefabInstance:
     - target: {fileID: 3452350949280923542, guid: f36fd2ef811fb6348bb5a26558d80c74,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3452350949280923542, guid: f36fd2ef811fb6348bb5a26558d80c74,
-        type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3657,8 +3655,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945848202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.41, y: 1.143, z: 3.877}
-  m_LocalScale: {x: 0.11734, y: 1.8967, z: 1}
+  m_LocalPosition: {x: 8.7744, y: 1.143, z: 3.877}
+  m_LocalScale: {x: -0.078019775, y: 1.8967, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -3679,6 +3677,7 @@ MonoBehaviour:
   Cameras:
   - {fileID: 963194225}
   - {fileID: 696193672}
+  EventHandler: {fileID: 906581859}
 --- !u!54 &1945848206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3730,6 +3729,7 @@ MonoBehaviour:
   Cameras:
   - {fileID: 696193672}
   - {fileID: 1378968790}
+  EventHandler: {fileID: 0}
 --- !u!54 &1957647735
 Rigidbody:
   m_ObjectHideFlags: 0
