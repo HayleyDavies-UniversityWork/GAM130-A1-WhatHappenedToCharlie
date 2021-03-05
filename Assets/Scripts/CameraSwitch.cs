@@ -43,5 +43,11 @@ public class CameraSwitch : MonoBehaviour {
         }
 
     }
+    private void Update()
+    {
+        Transform CamTarget = GameObject.Find("CamTarget").GetComponent<Transform>();
+        
 
+        CurrentCamera.transform.LookAt(CamTarget);
+    }
 }
