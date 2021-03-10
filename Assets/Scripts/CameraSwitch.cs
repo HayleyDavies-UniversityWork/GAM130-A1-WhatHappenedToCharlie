@@ -27,7 +27,7 @@ public class CameraSwitch : MonoBehaviour {
         isTriggered Second_Col = Second_Trigger.GetComponent<isTriggered>();
         if (col.gameObject.name == "Player" && Second_Col.isEntered)
         {
-
+            // PLACE YOUT FUNCTIONS HERE XAV!!!!
             NextCameraSwitch();
             //TEST: When player leaves Bedroom items will be swapped
             if (CurrentCamera.name != "BedroomCamera")
