@@ -6,17 +6,26 @@ public class TornPaper : MonoBehaviour
 {
     public int Score = 0;
 
+    public GameObject WinText;
+
     private void Update()
     {
-        GameObject pieces = GameObject.Find("Pieces");
-        if (pieces.GetComponentInChildren<Piece>().isDone)
+        GameObject[] piece = GameObject.FindGameObjectsWithTag("TPP_Piece");
+        foreach (var item in piece)
         {
-            Score += 1;
+            if (item.GetComponent<Piece>().isDone)
+            {
+                Score += 1;
+                item.tag = "Untagged";
+               
+            }
+            
         }
 
-        if(Score <= 4)
+        if(Score >= 4)
         {
-            GameObject.Find("WinText").SetActive(true);
+            
+            WinText.SetActive(true);
         }
     }
 }

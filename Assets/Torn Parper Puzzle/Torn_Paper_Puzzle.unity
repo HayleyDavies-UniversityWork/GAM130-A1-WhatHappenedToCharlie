@@ -535,8 +535,8 @@ GameObject:
   - component: {fileID: 646168965}
   - component: {fileID: 646168967}
   m_Layer: 5
-  m_Name: Piece
-  m_TagString: Untagged
+  m_Name: Piece_0
+  m_TagString: TPP_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -826,8 +826,8 @@ GameObject:
   - component: {fileID: 1093769063}
   - component: {fileID: 1093769062}
   m_Layer: 5
-  m_Name: Piece (1)
-  m_TagString: Untagged
+  m_Name: Piece_1
+  m_TagString: TPP_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -991,8 +991,8 @@ GameObject:
   - component: {fileID: 1185217917}
   - component: {fileID: 1185217916}
   m_Layer: 5
-  m_Name: Piece (2)
-  m_TagString: Untagged
+  m_Name: Piece_2
+  m_TagString: TPP_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1080,8 +1080,8 @@ GameObject:
   - component: {fileID: 1218364147}
   - component: {fileID: 1218364146}
   m_Layer: 5
-  m_Name: Piece (3)
-  m_TagString: Untagged
+  m_Name: Piece_3
+  m_TagString: TPP_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
+  WinText: {fileID: 241778969}
 --- !u!1 &1860921381
 GameObject:
   m_ObjectHideFlags: 0

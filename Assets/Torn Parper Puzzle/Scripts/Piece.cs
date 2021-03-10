@@ -46,6 +46,7 @@ public class Piece : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
         {
             isDragable = false;
             isDone = true;
+            
             //Debug.Log("In place");
 
         }
