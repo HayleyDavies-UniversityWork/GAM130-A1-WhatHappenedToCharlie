@@ -23,8 +23,7 @@ namespace CombinationLock {
 
         void InitializeLocks() {
             for (int i = 0; i < dials.Count; i++) {
-                RotationDriveMode = comboLockObject.
-                dials[i].transform.rotation
+                
             }
         }
     }
