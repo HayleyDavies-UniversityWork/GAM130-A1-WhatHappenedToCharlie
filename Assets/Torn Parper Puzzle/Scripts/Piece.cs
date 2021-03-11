@@ -41,9 +41,10 @@ public class Piece : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
     {
         Vector3 pieceVec = this.transform.position;
         Vector3 placeVec = piecePlace.GetComponent<BoxCollider2D>().transform.position;
-        if (Mathf.Abs(pieceVec.x - placeVec.x) <= 7 &&
-            Mathf.Abs(pieceVec.y - placeVec.y) <= 7)
+        if (Mathf.Abs(pieceVec.x - placeVec.x) <= 10 &&
+            Mathf.Abs(pieceVec.y - placeVec.y) <= 10)
         {
+            this.gameObject.transform.position = piecePlace.transform.position;
             isDragable = false;
             isDone = true;
             
