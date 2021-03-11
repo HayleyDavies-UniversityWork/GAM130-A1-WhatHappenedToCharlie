@@ -5,12 +5,16 @@ using UnityEngine;
 namespace CombinationLock {
     public class LockDial : MonoBehaviour {
         readonly int MAX_VALUE = 9;
-        int value;
-        int correctValue;
+        public int value;
+        public int correctValue;
 
         public void Initialize(ComboLockObject comboLockObject, int lockNumber) {
             value = comboLockObject.startValues[lockNumber];
             correctValue = comboLockObject.correctValues[lockNumber];
+        }
+
+        public void Update() {
+            
         }
 
         public bool isCorrectValue() {
@@ -19,16 +23,24 @@ namespace CombinationLock {
             return false;
         }
 
-        public void MoveUpValue() {
+        public void MoveValueDown() {
             value = (value + 1) % MAX_VALUE;
+            UpdateRotation();
         }
 
-        public void MoveDown() {
-            value = (value - 1) % MAX_VALUE;
+        public void MoveValueUp() {
+            if (value == 0) {
+                value = MAX_VALUE;
+            } else {
+                value -= 1;
+            }
+            UpdateRotation();
         }
 
-        public void OnMouse() {
-            MoveUpValue();
+        public void UpdateRotation() {
+            Vector3 rotation = transform.localRotation.eulerAngles;
+            rotation.y = value * (360 / (MAX_VALUE + 1));
+            transform.localRotation = Quaternion.Euler(rotation);
         }
     }
 }

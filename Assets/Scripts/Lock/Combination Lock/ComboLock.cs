@@ -17,16 +17,28 @@ namespace CombinationLock {
 
         // Update is called once per frame
         void Update() {
-
+            if (Input.GetMouseButtonDown(0)) {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit)) {
+                    if (hit.transform != null) {
+                        Transform dial = hit.transform;
+                        if (dial.GetComponent<LockDial>() != null) {
+                            if (hit.point.y >= dial.transform.position.y)
+                                dial.GetComponent<LockDial>().MoveValueUp();
+                            if (hit.point.y < dial.transform.position.y)
+                                dial.GetComponent<LockDial>().MoveValueDown();
+                        }
+                    }
+                }
+            }
         }
 
         void InitializeLocks() {
             for (int i = 0; i < dials.Count; i++) {
-                Vector3 rotation = dials[i].transform.rotation.eulerAngles;
-                rotation.x = comboLockObject.startValues[i] * 36;
-                dials[i].transform.rotation = Quaternion.Euler(rotation);
                 LockDial dial = dials[i].AddComponent<LockDial>() as LockDial;
                 dial.Initialize(comboLockObject, i);
+                dial.UpdateRotation();
             }
         }
     }
