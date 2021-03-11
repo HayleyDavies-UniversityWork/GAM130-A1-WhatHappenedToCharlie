@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8189788877871324068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8189788877871324070}
+  - component: {fileID: 8189788877871324071}
+  m_Layer: 5
+  m_Name: Sliding Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8189788877871324070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189788877871324068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 181.59149, y: -986.66187, z: -453.1245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8189788877871324071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189788877871324068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928f542a50457b94d8139e5bae9c6b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultTile: {fileID: 4296623658918452063, guid: c4f709b99f32892429559332b1f8dfec,
+    type: 3}
+  drawTileSize: 100
+  boardSize: 3
+  puzzleBoard:
+    boardSize: 0
+    board1d:
+    - {fileID: 21300000, guid: 1e76b46d027840046accdf47eaae2440, type: 3}
+    - {fileID: 21300000, guid: e230138204825f54bba458c4756b0815, type: 3}
+    - {fileID: 21300000, guid: c72f298c489056441bd58e2fecf03dc0, type: 3}
+    - {fileID: 21300000, guid: 0b675b75171df6b42a4013b2c4a4fff1, type: 3}
+    - {fileID: 21300000, guid: 5de209bb6b78ac04ea88a7b9402a49aa, type: 3}
+    - {fileID: 21300000, guid: 895a05a208f82da40bdd36c11f7e374b, type: 3}
+    - {fileID: 21300000, guid: d42d9c9c273cdcc499379beb133d13fd, type: 3}
+    - {fileID: 21300000, guid: 4475d8d91721f0b4f884e24aba4ac36c, type: 3}
+    - {fileID: 0}
+  puzzleBoardSolution:
+    boardSize: 0
+    board1d:
+    - {fileID: 21300000, guid: 895a05a208f82da40bdd36c11f7e374b, type: 3}
+    - {fileID: 21300000, guid: 5de209bb6b78ac04ea88a7b9402a49aa, type: 3}
+    - {fileID: 21300000, guid: 0b675b75171df6b42a4013b2c4a4fff1, type: 3}
+    - {fileID: 21300000, guid: c72f298c489056441bd58e2fecf03dc0, type: 3}
+    - {fileID: 21300000, guid: e230138204825f54bba458c4756b0815, type: 3}
+    - {fileID: 21300000, guid: 1e76b46d027840046accdf47eaae2440, type: 3}
+    - {fileID: 21300000, guid: 4475d8d91721f0b4f884e24aba4ac36c, type: 3}
+    - {fileID: 21300000, guid: d42d9c9c273cdcc499379beb133d13fd, type: 3}
+    - {fileID: 0}
