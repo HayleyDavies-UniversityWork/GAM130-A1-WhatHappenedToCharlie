@@ -8,7 +8,8 @@ using UnityEngine.Events;
 namespace InteractionSystem {
     public enum InteractionType {
         Pickup,
-        OpenPuzzle
+        OpenPuzzle,
+        SwitchLights
     }
 
     public class Interactable : MonoBehaviour {
@@ -28,6 +29,9 @@ namespace InteractionSystem {
                 case InteractionType.OpenPuzzle:
                     interact += OpenPuzzleInteraction;
                     break;
+                case InteractionType.SwitchLights:
+                    interact += SwitchLights;
+                    break;
             }
         }
 
@@ -45,6 +49,19 @@ namespace InteractionSystem {
 
         void OpenPuzzleInteraction() {
             puzzle.SetActive(true);
+        }
+
+        void SwitchLights()
+        {
+            SwitchLights light = GetComponent<SwitchLights>();
+            if (light.isOn)
+            {
+                light.LightsOff();
+            }
+            else
+            {
+                light.LightsOn();
+            }
         }
     }
 }
