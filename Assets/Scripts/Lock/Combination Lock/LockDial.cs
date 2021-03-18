@@ -9,7 +9,7 @@ namespace CombinationLock {
         public int correctValue;
 
         public void Initialize(ComboLockObject comboLockObject, int lockNumber) {
-            value = comboLockObject.startValues[lockNumber];
+            value = Random.Range(0, MAX_VALUE + 1);
             correctValue = comboLockObject.correctValues[lockNumber];
         }
 

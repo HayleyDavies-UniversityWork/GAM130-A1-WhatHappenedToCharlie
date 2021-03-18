@@ -29,9 +29,9 @@ namespace CombinationLock {
                 if (hit.transform != null) {
                     switch (hit.transform.tag) {
                         case "Dial":
-                            return $"{hit.transform.name} in position {MoveDial(hit.transform, hit.point)}";
-                        case "Submit":
-                            return $"{hit.transform.name} can be unlocked: {SubmitCombo()}";
+                            return $"{hit.transform.name}. Position {MoveDial(hit.transform, hit.point)}";
+                        case "LockSumbit":
+                            return $"{hit.transform.name}. Can be unlocked? {SubmitCombo()}";
                     }
                 }
             }
