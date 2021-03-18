@@ -7,6 +7,8 @@ TagManager:
   - InventoryItem
   - Interactable
   - TPP_Piece
+  - Dial
+  - LockSumbit
   layers:
   - Default
   - TransparentFX

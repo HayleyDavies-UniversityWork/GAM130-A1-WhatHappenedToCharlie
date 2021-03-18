@@ -18,20 +18,39 @@ namespace CombinationLock {
         // Update is called once per frame
         void Update() {
             if (Input.GetMouseButtonDown(0)) {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit)) {
-                    if (hit.transform != null) {
-                        Transform dial = hit.transform;
-                        if (dial.GetComponent<LockDial>() != null) {
-                            if (hit.point.y >= dial.transform.position.y)
-                                dial.GetComponent<LockDial>().MoveValueUp();
-                            if (hit.point.y < dial.transform.position.y)
-                                dial.GetComponent<LockDial>().MoveValueDown();
-                        }
+                Debug.Log($"[Clicked Object]: {ClickInteraction()}");
+            }
+        }
+
+        string ClickInteraction() {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.transform != null) {
+                    switch (hit.transform.tag) {
+                        case "Dial":
+                            return $"{hit.transform.name} in position {MoveDial(hit.transform, hit.point)}";
+                        case "Submit":
+                            return $"{hit.transform.name} can be unlocked: {SubmitCombo()}";
                     }
                 }
             }
+
+            return "None";
+        }
+
+        string MoveDial(Transform dial, Vector3 hitPoint) {
+            LockDial lockDial = dial.GetComponent<LockDial>();
+            if (hitPoint.y >= dial.transform.position.y)
+                lockDial.MoveValueUp();
+            if (hitPoint.y < dial.transform.position.y)
+                lockDial.MoveValueDown();
+            
+            return lockDial.value.ToString();
+        }
+
+        bool SubmitCombo() {
+            return comboLock.CanBeUnlocked();
         }
 
         void InitializeLocks() {
@@ -39,6 +58,7 @@ namespace CombinationLock {
                 LockDial dial = dials[i].AddComponent<LockDial>() as LockDial;
                 dial.Initialize(comboLockObject, i);
                 dial.UpdateRotation();
+                dial.tag = "Dial";
             }
         }
     }
