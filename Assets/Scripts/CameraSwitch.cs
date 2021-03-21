@@ -12,6 +12,9 @@ public class CameraSwitch : MonoBehaviour {
     //Event handler which triggers fucntions when camera being switched (eg ItemSwap.cs)
     public GameObject EventHandler;
 
+    //RoomAudio script to tell the audio manager the players location
+    public RoomAudio roomAudio;
+
     //Second trigger which is being used to make sure that player went through the door
     public GameObject Second_Trigger;
     //Fucntion for switching camera 
@@ -21,6 +24,8 @@ public class CameraSwitch : MonoBehaviour {
         CurrentCamera = Cameras[1];
     }
 
+    
+
     //Function being called when Player goes through Collider
     private void OnTriggerExit(Collider col)
     {
@@ -29,6 +34,8 @@ public class CameraSwitch : MonoBehaviour {
         {
             // PLACE YOUT FUNCTIONS HERE XAV!!!!
             NextCameraSwitch();
+            roomAudio.CheckRoomAudio();
+            Debug.Log("TEST");
             //TEST: When player leaves Bedroom items will be swapped
             if (CurrentCamera.name != "BedroomCamera")
             {

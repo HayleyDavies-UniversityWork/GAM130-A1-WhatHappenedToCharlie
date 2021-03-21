@@ -1505,6 +1505,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 783501896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &842771505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1507656150221851787, guid: f36fd2ef811fb6348bb5a26558d80c74,
+    type: 3}
+  m_PrefabInstance: {fileID: 1440094005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &842771508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842771505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Kitchen: {fileID: 1378968790}
+  Corridor: {fileID: 696193672}
+  Bedroom: {fileID: 963194225}
+  sink: {fileID: 1439177661}
+  drip: {fileID: 8300000, guid: 82c33b3d658594c4c907e21e1a451abb, type: 3}
+  volume: 0.5
 --- !u!1001 &852725184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,6 +1642,7 @@ MonoBehaviour:
   - {fileID: 1378968790}
   - {fileID: 696193672}
   EventHandler: {fileID: 906581859}
+  roomAudio: {fileID: 842771508}
   Second_Trigger: {fileID: 1957647733}
 --- !u!54 &880029942
 Rigidbody:
@@ -1788,7 +1813,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899630165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1298214203}
@@ -3426,6 +3451,108 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f434d1c64f537a146acbd6ac864f058e, type: 3}
+--- !u!1 &1439177656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586500889978838, guid: eab9a1e97bf14904698f6ed18fd7e3e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1046252817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1439177661
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439177656}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 82c33b3d658594c4c907e21e1a451abb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1440094005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4220,6 +4347,7 @@ MonoBehaviour:
   - {fileID: 963194225}
   - {fileID: 696193672}
   EventHandler: {fileID: 906581859}
+  roomAudio: {fileID: 842771508}
   Second_Trigger: {fileID: 1990913440}
 --- !u!54 &1945848206
 Rigidbody:
@@ -4287,6 +4415,7 @@ MonoBehaviour:
   - {fileID: 696193672}
   - {fileID: 1378968790}
   EventHandler: {fileID: 906581859}
+  roomAudio: {fileID: 842771508}
   Second_Trigger: {fileID: 880029939}
 --- !u!54 &1957647735
 Rigidbody:
@@ -4438,6 +4567,7 @@ MonoBehaviour:
   - {fileID: 696193672}
   - {fileID: 963194225}
   EventHandler: {fileID: 0}
+  roomAudio: {fileID: 842771508}
   Second_Trigger: {fileID: 1945848202}
 --- !u!1001 &2095458730
 PrefabInstance:
