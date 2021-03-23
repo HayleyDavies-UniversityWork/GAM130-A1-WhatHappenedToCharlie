@@ -17,6 +17,7 @@ public class CameraSwitch : MonoBehaviour {
 
     //Second trigger which is being used to make sure that player went through the door
     public GameObject Second_Trigger;
+
     //Fucntion for switching camera 
     private void NextCameraSwitch() {
         Cameras[0].SetActive(false);
@@ -30,7 +31,8 @@ public class CameraSwitch : MonoBehaviour {
     private void OnTriggerExit(Collider col)
     {
         isTriggered Second_Col = Second_Trigger.GetComponent<isTriggered>();
-        if (col.gameObject.name == "Player" && Second_Col.isEntered)
+        
+        if (col.gameObject.name == "Player" && Second_Col.isEntered && col == GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>())
         {
             // PLACE YOUT FUNCTIONS HERE XAV!!!!
             NextCameraSwitch();
