@@ -21,11 +21,11 @@ public class CameraSwitch : MonoBehaviour {
     //Fucntion for switching camera 
     private void NextCameraSwitch() {
         Cameras[0].SetActive(false);
+        Cameras[0].GetComponent<RoomAudio>().StopAudio();
         Cameras[1].SetActive(true);
+        Cameras[1].GetComponent<RoomAudio>().PlayAudio();
         CurrentCamera = Cameras[1];
     }
-
-    
 
     //Function being called when Player goes through Collider
     private void OnTriggerExit(Collider col)
@@ -36,15 +36,14 @@ public class CameraSwitch : MonoBehaviour {
         {
             // PLACE YOUT FUNCTIONS HERE XAV!!!!
             NextCameraSwitch();
-            roomAudio.CheckRoomAudio();
-            Debug.Log("TEST");
+            
+            //Debug.Log("TEST");
             //TEST: When player leaves Bedroom items will be swapped
             if (CurrentCamera.name != "BedroomCamera")
             {
                 EventHandler.GetComponent<ItemSwap>().SwapItems();
             }
         }
-
     }
     private void Update()
     {

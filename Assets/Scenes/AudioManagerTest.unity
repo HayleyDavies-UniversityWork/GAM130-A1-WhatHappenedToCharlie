@@ -183,6 +183,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6649c2928f310498660dcff07705ac, type: 3}
+--- !u!1 &72291025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72291028}
+  - component: {fileID: 72291027}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &72291027
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72291025}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &72291028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72291025}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.540389, y: -1.2643824, z: -3.4375627}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1298214203}
+  m_Father: {fileID: 190494781}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &78781476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,8 +483,9 @@ Transform:
   - {fileID: 696193675}
   - {fileID: 1378968793}
   - {fileID: 963194228}
+  - {fileID: 72291028}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &197950766
 PrefabInstance:
@@ -810,7 +886,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.95547, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &440702525
 PrefabInstance:
@@ -912,7 +988,7 @@ Transform:
   - {fileID: 752727521}
   - {fileID: 1323288024}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &563376959 stripped
 Transform:
@@ -1195,6 +1271,7 @@ GameObject:
   - component: {fileID: 696193675}
   - component: {fileID: 696193674}
   - component: {fileID: 696193673}
+  - component: {fileID: 696193676}
   m_Layer: 0
   m_Name: HallwayCamera
   m_TagString: Untagged
@@ -1244,7 +1321,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 31462e991a1ac8b4db5db06c26e0352a, type: 2}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -1267,6 +1344,20 @@ Transform:
   m_Father: {fileID: 190494781}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 33.63, y: -28.743002, z: -1.8000001}
+--- !u!114 &696193676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696193672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources: []
+  volume: 0.5
 --- !u!4 &697962411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051186458304474, guid: cd6649c2928f310498660dcff07705ac,
@@ -1363,7 +1454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.95547, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &752727521 stripped
 Transform:
@@ -1523,15 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kitchen: {fileID: 1378968790}
-  Corridor: {fileID: 696193672}
-  Bedroom: {fileID: 963194225}
-  KitchenSounds:
-  - {fileID: 1439177661}
-  CorridoorSounds: []
-  BedroomSounds: []
-  sink: {fileID: 1439177661}
-  drip: {fileID: 8300000, guid: 82c33b3d658594c4c907e21e1a451abb, type: 3}
+  sources: []
   volume: 0.5
 --- !u!1001 &852725184
 PrefabInstance:
@@ -1609,6 +1692,7 @@ GameObject:
   - component: {fileID: 880029942}
   - component: {fileID: 880029941}
   - component: {fileID: 880029940}
+  - component: {fileID: 880029945}
   m_Layer: 0
   m_Name: Kitchen-Hallway_Trigger
   m_TagString: Untagged
@@ -1691,6 +1775,20 @@ Transform:
   m_Father: {fileID: 1957647737}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880029945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880029939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources: []
+  volume: 0.5
 --- !u!1001 &880478273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1789,7 +1887,7 @@ Transform:
   - {fileID: 697962411}
   - {fileID: 1060024517}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &899630165
 GameObject:
@@ -1948,6 +2046,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: BedroomCamera
   m_TagString: MainCamera
@@ -1997,7 +2096,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 31462e991a1ac8b4db5db06c26e0352a, type: 2}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -2020,6 +2119,20 @@ Transform:
   m_Father: {fileID: 190494781}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 35, y: 45, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources: []
+  volume: 0.5
 --- !u!1001 &972994552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2301,7 +2414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971474634852902, guid: eab9a1e97bf14904698f6ed18fd7e3e2, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4971474634852902, guid: eab9a1e97bf14904698f6ed18fd7e3e2, type: 3}
       propertyPath: m_LocalScale.x
@@ -2831,8 +2944,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 899630166}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 72291028}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2929,7 +3042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.95547, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &1316565853 stripped
 Transform:
@@ -2962,7 +3075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4496227272830324, guid: 52e174db68e69754b9b080b25a308977, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4496227272830324, guid: 52e174db68e69754b9b080b25a308977, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3064,7 +3177,7 @@ Transform:
   - {fileID: 2098328171}
   - {fileID: 1525347926}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1351362929
 PrefabInstance:
@@ -3142,6 +3255,7 @@ GameObject:
   - component: {fileID: 1378968793}
   - component: {fileID: 1378968792}
   - component: {fileID: 1378968791}
+  - component: {fileID: 1378968794}
   m_Layer: 0
   m_Name: KitchenCamera
   m_TagString: Untagged
@@ -3191,7 +3305,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 31462e991a1ac8b4db5db06c26e0352a, type: 2}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -3214,6 +3328,21 @@ Transform:
   m_Father: {fileID: 190494781}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 32.56, y: 132.66501, z: 0}
+--- !u!114 &1378968794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378968790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources:
+  - {fileID: 1439177661}
+  volume: 0.5
 --- !u!1 &1395825949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,7 +3704,7 @@ PrefabInstance:
     - target: {fileID: 2639925533763134764, guid: f36fd2ef811fb6348bb5a26558d80c74,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2639925533763134764, guid: f36fd2ef811fb6348bb5a26558d80c74,
         type: 3}
@@ -3736,7 +3865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4186335368245520, guid: d11695e43d89ff24bb36886a4c039c14, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4186335368245520, guid: d11695e43d89ff24bb36886a4c039c14, type: 3}
       propertyPath: m_LocalScale.z
@@ -3880,7 +4009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.95547, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1749711367
 PrefabInstance:
@@ -4299,6 +4428,7 @@ GameObject:
   - component: {fileID: 1945848206}
   - component: {fileID: 1945848205}
   - component: {fileID: 1945848207}
+  - component: {fileID: 1945848208}
   m_Layer: 0
   m_Name: Bedroom-Hallway_Trigger
   m_TagString: Untagged
@@ -4332,7 +4462,7 @@ Transform:
   m_Children:
   - {fileID: 1990913444}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1945848205
 MonoBehaviour:
@@ -4382,6 +4512,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEntered: 0
+--- !u!114 &1945848208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945848202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources: []
+  volume: 0.5
 --- !u!1 &1957647733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4395,6 +4539,7 @@ GameObject:
   - component: {fileID: 1957647735}
   - component: {fileID: 1957647734}
   - component: {fileID: 1957647738}
+  - component: {fileID: 1957647739}
   m_Layer: 0
   m_Name: Hallway-Kitchen_Trigger
   m_TagString: Untagged
@@ -4478,6 +4623,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEntered: 0
+--- !u!114 &1957647739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957647733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources:
+  - {fileID: 1439177661}
+  volume: 0.5
 --- !u!1 &1990913440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4491,6 +4651,7 @@ GameObject:
   - component: {fileID: 1990913442}
   - component: {fileID: 1990913445}
   - component: {fileID: 1990913441}
+  - component: {fileID: 1990913446}
   m_Layer: 0
   m_Name: Hallway-Bedroom_Trigger
   m_TagString: Untagged
@@ -4573,6 +4734,20 @@ MonoBehaviour:
   EventHandler: {fileID: 0}
   roomAudio: {fileID: 842771508}
   Second_Trigger: {fileID: 1945848202}
+--- !u!114 &1990913446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990913440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2080f4ffa19d05d40984322d58e88ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources: []
+  volume: 0.5
 --- !u!1001 &2095458730
 PrefabInstance:
   m_ObjectHideFlags: 0

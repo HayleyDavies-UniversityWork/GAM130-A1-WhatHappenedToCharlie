@@ -1,63 +1,31 @@
 ﻿using UnityEngine.Audio;
-using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-[RequireComponent(typeof(AudioSource))]
-public class RoomAudio : MonoBehaviour
-{
-    public static RoomAudio instance;
-    public GameObject Kitchen;
-    public GameObject Corridor;
-    public GameObject Bedroom;
+public class RoomAudio : MonoBehaviour {
+    // room sources
+    public AudioSource[] sources;
 
-    //Kitchen noises
-    public AudioSource sink;
-    public AudioClip drip;
     public float volume = 0.5f;
 
-
-    void Awake()
-    {
-        if (Kitchen.activeSelf == true)
-        {
-            Debug.Log("kitchen Active");
+    public void Start() {
+        if (name == "BedroomCamera") {
+            PlayAudio();
         }
-
-        if (Corridor.activeSelf == true)
-        {
-            Debug.Log("Corridoor Active");
-        }
-
-        if (Bedroom.activeSelf == true)
-        {
-            Debug.Log("Bedroom Active");
+    }
+    
+    public void PlayAudio() {
+        Debug.Log($"{transform.name} is playing audio.");
+        foreach (AudioSource source in sources) {
+            source.Play();
         }
     }
 
-    void Start()
-    {
-        
-    }
-
-    public void CheckRoomAudio()
-    {
-        if (Kitchen.activeSelf == true)
-        {
-            Debug.Log("kitchen Active");
-            sink.PlayOneShot(drip, volume);
-        }
-
-        if (Corridor.activeSelf == true)
-        {
-            Debug.Log("Corridoor Active");
-        }
-
-        if (Bedroom.activeSelf == true)
-        {
-            Debug.Log("Bedroom Active");
+    public void StopAudio() {
+        Debug.Log($"{transform.name} is stopping audio.");
+        foreach (AudioSource source in sources) {
+            source.Stop();
         }
     }
-    //XAVS CODE HERE DONT MIND ME IF THIS BREAKS SOMETHING IM SO SORRY
-    //RoomAudio.instance.CheckRoomAudio();
-                //Debug.Log("TEST");
 }
