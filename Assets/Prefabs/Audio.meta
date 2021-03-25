@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Lock/Combination Lock.meta
+guid: 573507bfc08bfda43a3d5ea4fabffd49
+=======
 guid: 6bea5500920c3394b88f822af39555b6
+>>>>>>> remotes/origin/master:Assets/Prefabs/Audio.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
