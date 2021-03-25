@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   puzzle: {fileID: 6535470545309186845}
+  TornPaper: {fileID: 0}
 --- !u!114 &3104491156509085120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ MonoBehaviour:
   lights:
   - {fileID: 0}
   - {fileID: 0}
-  isOn: 0
+  isOn: 1
 --- !u!1001 &3104491157713428665
 PrefabInstance:
   m_ObjectHideFlags: 0

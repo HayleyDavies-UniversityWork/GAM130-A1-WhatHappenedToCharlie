@@ -23,6 +23,7 @@ namespace InteractionSystem {
 
         public GameObject TornPaper;
 
+
         // Start is called before the first frame update
         void Start() {
             switch (interactionType) {
@@ -61,14 +62,7 @@ namespace InteractionSystem {
         void SwitchLights()
         {
             SwitchLights light = GetComponent<SwitchLights>();
-            if (light.isOn)
-            {
-                light.LightsOff();
-            }
-            else
-            {
-                light.LightsOn();
-            }
+            light.Switch();
         }
 
 

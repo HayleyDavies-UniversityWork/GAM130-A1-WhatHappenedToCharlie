@@ -8,21 +8,24 @@ public class SwitchLights : MonoBehaviour
 
     [SerializeField]
     public bool isOn;
-    public void LightsOff()
-    {
-        foreach(var item in lights)
-        {
-            item.SetActive(false);
-        }
-        isOn = false;
-    }
 
-    public void LightsOn()
+    public void Switch()
     {
-        foreach (var item in lights)
+        if (isOn)
         {
-            item.SetActive(true);
+            foreach (var item in lights)
+            {
+                item.SetActive(false);
+            }
+            isOn = false;
         }
-        isOn = true;
+        else
+        {
+            foreach (var item in lights)
+            {
+                item.SetActive(true);
+            }
+            isOn = true;
+        }
     }
 }
