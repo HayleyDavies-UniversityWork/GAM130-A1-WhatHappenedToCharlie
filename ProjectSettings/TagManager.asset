@@ -4,15 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - InventoryItem
   - Interactable
-  - TPP_Piece
-<<<<<<< HEAD
-  - Dial
-  - LockSumbit
-=======
-  - TornPaperPuzzle
->>>>>>> 800751e99636a45c523ded211e19894ded170d45
   layers:
   - Default
   - TransparentFX
