@@ -69,7 +69,7 @@ namespace Puzzles {
 
         public void CreateBoard() {
             puzzleBoard = SplitTexture();
-            puzzleBoardSolution = SplitTexture();
+            puzzleBoardSolution = new SlidingPuzzleBoard(puzzleBoard);
             DisplayBoard();
         }
 
@@ -153,7 +153,6 @@ namespace Puzzles {
 
         void RandomizeBoard(Button self) {
             self.onClick?.Invoke();
-            
         }
 
         public void ClickTileButton(Button self, Vector2Int buttonPos) {
@@ -170,6 +169,7 @@ namespace Puzzles {
             if (IsPuzzleComplete()) {
                 Debug.Log("Puzzle has been completed!");
                 gameObject.SetActive(false);
+                transform.parent.GetComponent<Collider>().enabled = false;
             }
         }
 

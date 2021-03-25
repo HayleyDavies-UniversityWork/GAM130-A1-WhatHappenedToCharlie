@@ -74,7 +74,6 @@ namespace InteractionSystem {
 
         public void OpenTornPaperPuzzle()
         {
-
             Instantiate(TornPaper);
         }
     }

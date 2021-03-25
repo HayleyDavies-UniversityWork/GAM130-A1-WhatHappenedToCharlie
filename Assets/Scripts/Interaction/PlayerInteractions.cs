@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using InventorySystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace InteractionSystem {
     public class PlayerInteractions : MonoBehaviour {
         private Collider currentCollider;
 
+        public Canvas canvas;
+
         // Start is called before the first frame update
         void Start() {
-
+            canvas.enabled = false;
         }
 
         // Update is called once per frame
@@ -25,6 +28,7 @@ namespace InteractionSystem {
         /// Interact handles the interactions of the player
         /// </summary>
         void Interact() {
+            canvas.enabled = false;
             // if the current collider has been set
             if (currentCollider != null) {
                 // get the tag of the collider
@@ -40,6 +44,7 @@ namespace InteractionSystem {
             if (other.CompareTag("Interactable")) {
                 // set the current collider collider triggered
                 currentCollider = other;
+                canvas.enabled = true;
             }
         }
 
@@ -53,6 +58,7 @@ namespace InteractionSystem {
                 // set the currentCollider to null
                 currentCollider = null;
             }
+            canvas.enabled = false;
         }
     }
 }
