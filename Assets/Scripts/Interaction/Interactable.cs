@@ -9,7 +9,8 @@ namespace InteractionSystem {
     public enum InteractionType {
         Pickup,
         OpenPuzzle,
-        SwitchLights
+        SwitchLights,
+        TornPaperPuzzle
     }
 
     public class Interactable : MonoBehaviour {
@@ -19,6 +20,8 @@ namespace InteractionSystem {
         public UnityAction interact;
 
         public GameObject puzzle;
+
+        public GameObject TornPaper;
 
         // Start is called before the first frame update
         void Start() {
@@ -32,7 +35,11 @@ namespace InteractionSystem {
                 case InteractionType.SwitchLights:
                     interact += SwitchLights;
                     break;
+                case InteractionType.TornPaperPuzzle:
+                    interact += OpenTornPaperPuzzle;
+                    break;
             }
+            
         }
 
         /// <summary>
@@ -62,6 +69,13 @@ namespace InteractionSystem {
             {
                 light.LightsOn();
             }
+        }
+
+
+        public void OpenTornPaperPuzzle()
+        {
+
+            Instantiate(TornPaper);
         }
     }
 }
