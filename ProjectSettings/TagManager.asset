@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - InventoryItem
+  - TTP_Piece
+  - TornPaperPuzzle
   layers:
   - Default
   - TransparentFX
