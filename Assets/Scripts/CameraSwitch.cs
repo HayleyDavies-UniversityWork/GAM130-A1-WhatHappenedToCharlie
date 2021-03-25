@@ -18,8 +18,6 @@ public class CameraSwitch : MonoBehaviour {
     //Second trigger which is being used to make sure that player went through the door
     public GameObject Second_Trigger;
 
-    public GameObject CamTarget;
-
     //Fucntion for switching camera 
     private void NextCameraSwitch() {
         Cameras[0].SetActive(false);
@@ -47,11 +45,10 @@ public class CameraSwitch : MonoBehaviour {
             }
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
-
+        Transform CamTarget = GameObject.Find("CamTarget").GetComponent<Transform>();
         CurrentCamera.transform.LookAt(CamTarget.transform);
-        
     }
 
     
