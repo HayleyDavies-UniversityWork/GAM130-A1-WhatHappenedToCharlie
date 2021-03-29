@@ -9,6 +9,17 @@ public class SlidingPuzzleBoard {
 
     public Sprite[] board1d;
     public Sprite[, ] board2d;
+    
+
+    public SlidingPuzzleBoard(SlidingPuzzleBoard board) {
+        boardSize = board.boardSize;
+        board1d = board.board1d;
+        board2d = board.board2d;
+    }
+
+    public SlidingPuzzleBoard() {
+        
+    }
 }
 
 public static class SetupSlidingBoard {

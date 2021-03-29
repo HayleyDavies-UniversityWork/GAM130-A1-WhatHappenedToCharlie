@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - InventoryItem
   - Interactable
-  - TPP_Piece
+  - InventoryItem
+  - TTP_Piece
   - TornPaperPuzzle
   layers:
   - Default

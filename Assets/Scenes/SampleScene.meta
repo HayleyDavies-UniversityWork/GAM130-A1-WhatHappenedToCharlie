@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/[Imported Assets]/TextMesh Pro.meta
+guid: f54d1bd14bd3ca042bd867b519fee8cc
+=======
 guid: 93cfa31087ec4e24dab4deeb738fca9d
+>>>>>>> remotes/origin/master:Assets/Scenes/SampleScene.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
