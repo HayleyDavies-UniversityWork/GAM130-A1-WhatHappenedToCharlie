@@ -2,7 +2,7 @@
 using UnityEngine;
 using Fungus;
 
-public class PickupItem : MonoBehaviour
+public class FungusCameraTrigger : MonoBehaviour
 {
     public string pickupMessage = "PickupQuestItem";
 
@@ -25,7 +25,7 @@ public class PickupItem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Disable the collider immediately to prevent this method triggering again.
-        col.enabled = false;
+        col.enabled = true;
         Flowchart.BroadcastFungusMessage(pickupMessage);
         //This is the default fungus message that will be shown, keeping it the same as pauls in case things break
     }
