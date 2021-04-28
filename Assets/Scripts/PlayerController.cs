@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     void ControlPlayer() {
         if (playerEnabled) {
             CharacterController controller = GetComponent<CharacterController>();
+            GetComponent<Walk>().RunAnimations();
 
             movement = new Vector3(0, 0, Input.GetAxis("Vertical"));
             movement = transform.TransformDirection(movement);
