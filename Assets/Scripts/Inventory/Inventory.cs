@@ -11,7 +11,7 @@ namespace InventorySystem {
     /// </summary>
     public static class Inventory {
         // a dictionary to store the inventory items
-        static Dictionary<string, InventoryItem> Contents = new Dictionary<string, InventoryItem>();
+        public static Dictionary<string, InventoryItem> Contents = new Dictionary<string, InventoryItem>();
 
         /// <summary>
         // add an item to the dictionary
@@ -19,6 +19,7 @@ namespace InventorySystem {
         /// <param name="item">the item to be added to the inventory</param>
         public static void Add(InventoryItem item) {
             Contents.Add(item.Name, item);
+            Debug.Log($"Added: {item.Name}");
         }
 
         /// <summary>

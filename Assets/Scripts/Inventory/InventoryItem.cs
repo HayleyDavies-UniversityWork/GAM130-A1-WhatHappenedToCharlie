@@ -13,10 +13,10 @@ namespace InventorySystem {
         public string Description;
 
         // icon for the item
-        public Texture Icon;
+        public Sprite Icon;
 
         // how to declare a new Item()
-        public InventoryItem(string name, string description, Texture icon) {
+        public InventoryItem(string name, string description, Sprite icon) {
             Icon = icon;
             Name = name;
             Description = description;

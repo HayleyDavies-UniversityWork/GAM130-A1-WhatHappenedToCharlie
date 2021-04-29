@@ -291,6 +291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   WinText: {fileID: 241778969}
+  exitButton: {fileID: 0}
+  InteractableObj: {fileID: 0}
+  missingPiece: {fileID: 0}
 --- !u!1 &1860921381
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +393,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3031523998410244616, guid: 8a22abeedd5888c40a457c47d4f366cc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -798.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031523998410244616, guid: 8a22abeedd5888c40a457c47d4f366cc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.978
+      objectReference: {fileID: 0}
     - target: {fileID: 4447794114162841380, guid: 8a22abeedd5888c40a457c47d4f366cc,
         type: 3}
       propertyPath: m_Name
