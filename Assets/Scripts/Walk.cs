@@ -10,9 +10,10 @@ public class Walk : MonoBehaviour {
         anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
         anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
         if (Input.GetKeyDown(KeyCode.E)) {
-            anim.SetTrigger("PickUp");
+            anim.SetTrigger("Pickup");
         } else {
-            anim.ResetTrigger("PickUp");
+            anim.ResetTrigger("Pickup");
         }
     }
+
 }
