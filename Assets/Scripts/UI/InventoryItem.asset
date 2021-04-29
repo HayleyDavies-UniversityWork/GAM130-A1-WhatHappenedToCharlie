@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac3e6500f832e440b12debb419a44bc, type: 3}
   m_Name: InventoryItem
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Lul
   Description: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: c72f298c489056441bd58e2fecf03dc0, type: 3}
