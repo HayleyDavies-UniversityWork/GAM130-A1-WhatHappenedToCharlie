@@ -8,6 +8,9 @@ TagManager:
   - InventoryItem
   - TTP_Piece
   - TornPaperPuzzle
+  - TPP_Piece
+  - Laser
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PlayerObject
   - 
   - 
   - 
