@@ -23,7 +23,6 @@ namespace InteractionSystem {
 
         public GameObject TornPaper;
 
-
         // Start is called before the first frame update
         void Start() {
             switch (interactionType) {
@@ -40,7 +39,7 @@ namespace InteractionSystem {
                     interact += OpenTornPaperPuzzle;
                     break;
             }
-            
+
         }
 
         /// <summary>
@@ -52,6 +51,7 @@ namespace InteractionSystem {
             // add the item to the inventory
             Inventory.Add(item);
             // destory the collider object
+            FindObjectOfType<InventroyButton>().ReloadItems();
             Destroy(this.gameObject);
         }
 
@@ -59,16 +59,14 @@ namespace InteractionSystem {
             puzzle.SetActive(true);
         }
 
-        void SwitchLights()
-        {
+        void SwitchLights() {
             SwitchLights light = GetComponent<SwitchLights>();
             light.Switch();
         }
 
-
-        public void OpenTornPaperPuzzle()
-        {
-            Instantiate(TornPaper);
+        public void OpenTornPaperPuzzle() {
+            var puzzle = Instantiate(TornPaper);
+            puzzle.transform.parent = transform;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Puzzles {
 
         // Start is called before the first frame update
         void Start() {
-            drawTileSize = drawTileSize / boardSize;
+
         }
 
         // Update is called once per frame
@@ -41,9 +41,9 @@ namespace Puzzles {
             int sqrSize = boardSize * boardSize;
 
             board.board1d = new Sprite[sqrSize];
-            
+
             int count = 0;
-            for(int i = 0; i < boardSize; i++) {
+            for (int i = 0; i < boardSize; i++) {
                 for (int j = boardSize - 1; j >= 0; j--) {
                     if (i == boardSize - 1 && j == 0) {
                         break;
@@ -59,7 +59,7 @@ namespace Puzzles {
                     count++;
                 }
             }
-            
+
             board.SetupBoard(boardSize);
 
             board.board2d.Convert1D();
@@ -169,7 +169,7 @@ namespace Puzzles {
             if (IsPuzzleComplete()) {
                 Debug.Log("Puzzle has been completed!");
                 gameObject.SetActive(false);
-                transform.parent.GetComponent<Collider>().enabled = false;
+                Destroy(transform.parent.gameObject);
             }
         }
 

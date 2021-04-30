@@ -13,6 +13,8 @@ namespace InventorySystem {
         // a dictionary to store the inventory items
         public static Dictionary<string, InventoryItem> Contents = new Dictionary<string, InventoryItem>();
 
+        public const int MAX_INV_SIZE = 6;
+
         /// <summary>
         // add an item to the dictionary
         /// </summary>
