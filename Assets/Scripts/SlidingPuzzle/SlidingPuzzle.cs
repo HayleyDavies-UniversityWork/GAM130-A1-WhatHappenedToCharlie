@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Puzzles {
     public class SlidingPuzzle : MonoBehaviour {
+        public string CompletionFungusMessage = "";
         public GameObject defaultTile;
 
         public float drawTileSize;
@@ -168,6 +170,7 @@ namespace Puzzles {
 
             if (IsPuzzleComplete()) {
                 Debug.Log("Puzzle has been completed!");
+                Fungus.Flowchart.BroadcastFungusMessage(CompletionFungusMessage);
                 gameObject.SetActive(false);
                 Destroy(transform.parent.gameObject);
             }
