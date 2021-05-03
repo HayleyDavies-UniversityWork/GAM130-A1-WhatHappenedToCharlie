@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using InventorySystem;
 using UnityEngine;
+using Fungus;
 
 public class TornPaper : MonoBehaviour {
     public int Score = 0;
@@ -30,8 +31,8 @@ public class TornPaper : MonoBehaviour {
 
         if (Score >= 4) {
 
-            WinText.SetActive(true);
-            exitButton.SetActive(true);
+            Fungus.Flowchart.BroadcastFungusMessage("Torn Paper Puzzle Complete");
+            Destroy(this.gameObject);
         }
     }
     public void RestartPuzzle() {
