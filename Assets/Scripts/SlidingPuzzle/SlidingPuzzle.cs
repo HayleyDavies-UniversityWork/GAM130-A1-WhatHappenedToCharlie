@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 namespace Puzzles {
     public class SlidingPuzzle : MonoBehaviour {
+        public enum Difficulty {
+            Easy = 25,
+            Medium = 50,
+            Hard = 100
+        }
+
+        public Difficulty boardMovementCount = Difficulty.Easy;
         public string CompletionFungusMessage = "";
         public GameObject defaultTile;
 
@@ -21,8 +28,6 @@ namespace Puzzles {
         public Button[, ] buttonArray2D;
 
         bool created = false;
-
-        public int boardMovementCount = 100;
 
         bool shuffleMode = true;
 
@@ -82,7 +87,13 @@ namespace Puzzles {
             buttonArray2D = new Button[boardSize, boardSize];
             Vector2Int blankPos = new Vector2Int(boardSize - 1, boardSize - 1);
             DisplayBoard();
-            ShuffleTiles(boardMovementCount, blankPos, blankPos);
+
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+            ShuffleTiles((int) boardMovementCount, blankPos, blankPos);
+            watch.Stop();
+
+            Debug.Log($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         void DisplayBoard() {
@@ -148,6 +159,8 @@ namespace Puzzles {
         void MoveTileTo(Button self, Vector2Int oldPos, Vector2Int newPos) {
             puzzleBoard.board2d[newPos.x, newPos.y] = puzzleBoard.board2d[oldPos.x, oldPos.y];
             puzzleBoard.board2d[oldPos.x, oldPos.y] = null;
+            buttonArray2D[newPos.x, newPos.y] = buttonArray2D[oldPos.x, oldPos.y];
+            buttonArray2D[oldPos.x, oldPos.y] = null;
 
             int xOffset = newPos.x - (boardSize / 2);
             int yOffset = (boardSize / 2) - newPos.y;
@@ -175,29 +188,24 @@ namespace Puzzles {
         }
 
         Vector2Int GetAdjacentTile(Vector2Int blankPos, Vector2Int previousBlankPos) {
-            int direction = Random.Range(0, 4);
-            Vector2Int movement = Vector2Int.up;
+            List<Vector2Int> directions = new List<Vector2Int>();
 
-            switch (direction) {
-                case 0:
-                    movement = Vector2Int.up;
-                    break;
-                case 1:
-                    movement = Vector2Int.down;
-                    break;
-                case 2:
-                    movement = Vector2Int.left;
-                    break;
-                case 3:
-                    movement = Vector2Int.right;
-                    break;
+            if (blankPos.x < boardSize - 1 && blankPos.x + 1 != previousBlankPos.x) {
+                directions.Add(Vector2Int.right);
+            }
+            if (blankPos.x > 0 && blankPos.x - 1 != previousBlankPos.x) {
+                directions.Add(Vector2Int.left);
+            }
+            if (blankPos.y < boardSize - 1 && blankPos.y + 1 != previousBlankPos.y) {
+                directions.Add(Vector2Int.up);
+            }
+            if (blankPos.y > 0 && blankPos.y - 1 != previousBlankPos.y) {
+                directions.Add(Vector2Int.down);
             }
 
-            Vector2Int tile = blankPos + movement;
+            int d = Random.Range(0, directions.Count);
 
-            if (tile.x >= boardSize || tile.y >= boardSize || tile.x < 0 || tile.y < 0 || buttonArray2D[tile.x, tile.y] == null) {
-                tile = GetAdjacentTile(blankPos, previousBlankPos);
-            }
+            Vector2Int tile = blankPos + directions[d];
 
             return tile;
         }
@@ -227,13 +235,6 @@ namespace Puzzles {
                     return false;
                 }
             }
-            // for (int i = 0; i < boardSize; i++) {
-            //     for (int j = 0; j < boardSize; j++) {
-            //         if (puzzleBoard.board2d[i, j] != puzzleBoardSolution.board2d[i, j]) {
-            //             return false;
-            //         }
-            //     }
-            // }
 
             Fungus.Flowchart.BroadcastFungusMessage(CompletionFungusMessage);
             return true;
