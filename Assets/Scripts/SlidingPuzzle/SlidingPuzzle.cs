@@ -18,7 +18,13 @@ namespace Puzzles {
         public SlidingPuzzleBoard puzzleBoard;
         public SlidingPuzzleBoard puzzleBoardSolution;
 
+        public Button[, ] buttonArray2D;
+
         bool created = false;
+
+        public int boardMovementCount = 100;
+
+        bool shuffleMode = true;
 
         // Start is called before the first frame update
         void Start() {
@@ -72,7 +78,11 @@ namespace Puzzles {
         public void CreateBoard() {
             puzzleBoard = SplitTexture();
             puzzleBoardSolution = new SlidingPuzzleBoard(puzzleBoard);
+            puzzleBoardSolution.board1d = puzzleBoardSolution.board2d.Convert1D();
+            buttonArray2D = new Button[boardSize, boardSize];
+            Vector2Int blankPos = new Vector2Int(boardSize - 1, boardSize - 1);
             DisplayBoard();
+            ShuffleTiles(boardMovementCount, blankPos, blankPos);
         }
 
         void DisplayBoard() {
@@ -85,7 +95,6 @@ namespace Puzzles {
 
             for (int i = 0; i < boardSize; i++) {
                 for (int j = 0; j < puzzleBoard.boardSize; j++) {
-
                     CreateNewTile(i, j, childCanvas);
                 }
             }
@@ -117,8 +126,8 @@ namespace Puzzles {
             Vector2 size = new Vector2(drawTileSize, drawTileSize);
             newTile.GetComponent<RectTransform>().sizeDelta = size;
 
-            Button newButton = newTile.GetComponent<Button>();
-            newButton.onClick.AddListener(() => ClickTileButton(newButton, new Vector2Int(x, y)));
+            buttonArray2D[x, y] = newTile.GetComponent<Button>();
+            buttonArray2D[x, y].onClick.AddListener(() => ClickTileButton(buttonArray2D[x, y], new Vector2Int(x, y)));
 
             print("listener added");
 
@@ -153,8 +162,44 @@ namespace Puzzles {
             self.onClick.AddListener(() => ClickTileButton(self, newPos));
         }
 
-        void RandomizeBoard(Button self) {
-            self.onClick?.Invoke();
+        void ShuffleTiles(int movements, Vector2Int blankPos, Vector2Int previousBlankPos) {
+            movements--;
+
+            Vector2Int clickPos = GetAdjacentTile(blankPos, previousBlankPos);
+
+            buttonArray2D[clickPos.x, clickPos.y].onClick.Invoke();
+            if (movements > 0) {
+                ShuffleTiles(movements, clickPos, blankPos);
+            }
+            shuffleMode = false;
+        }
+
+        Vector2Int GetAdjacentTile(Vector2Int blankPos, Vector2Int previousBlankPos) {
+            int direction = Random.Range(0, 4);
+            Vector2Int movement = Vector2Int.up;
+
+            switch (direction) {
+                case 0:
+                    movement = Vector2Int.up;
+                    break;
+                case 1:
+                    movement = Vector2Int.down;
+                    break;
+                case 2:
+                    movement = Vector2Int.left;
+                    break;
+                case 3:
+                    movement = Vector2Int.right;
+                    break;
+            }
+
+            Vector2Int tile = blankPos + movement;
+
+            if (tile.x >= boardSize || tile.y >= boardSize || tile.x < 0 || tile.y < 0 || buttonArray2D[tile.x, tile.y] == null) {
+                tile = GetAdjacentTile(blankPos, previousBlankPos);
+            }
+
+            return tile;
         }
 
         public void ClickTileButton(Button self, Vector2Int buttonPos) {
@@ -168,23 +213,29 @@ namespace Puzzles {
                 MoveTileTo(self, buttonPos, buttonPos + new Vector2Int(0, 1));
             }
 
-            if (IsPuzzleComplete()) {
+            if (IsPuzzleComplete() && shuffleMode == false) {
                 Debug.Log("Puzzle has been completed!");
-                Fungus.Flowchart.BroadcastFungusMessage(CompletionFungusMessage);
                 gameObject.SetActive(false);
                 Destroy(transform.parent.gameObject);
             }
         }
 
         bool IsPuzzleComplete() {
-            for (int i = 0; i < boardSize; i++) {
-                for (int j = 0; j < boardSize; j++) {
-                    if (puzzleBoard.board2d[i, j] != puzzleBoardSolution.board2d[i, j]) {
-                        return false;
-                    }
+            int sqrSize = boardSize * boardSize;
+            for (int i = 0; i < sqrSize; i++) {
+                if (puzzleBoard.board1d[i] != puzzleBoardSolution.board1d[i]) {
+                    return false;
                 }
             }
+            // for (int i = 0; i < boardSize; i++) {
+            //     for (int j = 0; j < boardSize; j++) {
+            //         if (puzzleBoard.board2d[i, j] != puzzleBoardSolution.board2d[i, j]) {
+            //             return false;
+            //         }
+            //     }
+            // }
 
+            Fungus.Flowchart.BroadcastFungusMessage(CompletionFungusMessage);
             return true;
         }
     }

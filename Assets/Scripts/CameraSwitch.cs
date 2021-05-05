@@ -18,6 +18,12 @@ public class CameraSwitch : MonoBehaviour {
     //Second trigger which is being used to make sure that player went through the door
     public GameObject Second_Trigger;
 
+    Transform CamTarget;
+
+    void Start() {
+        CamTarget = GameObject.Find("CamTarget").GetComponent<Transform>();
+    }
+
     //Fucntion for switching camera 
     private void NextCameraSwitch() {
         Cameras[0].SetActive(false);
@@ -28,28 +34,22 @@ public class CameraSwitch : MonoBehaviour {
     }
 
     //Function being called when Player goes through Collider
-    private void OnTriggerExit(Collider col)
-    {
+    private void OnTriggerExit(Collider col) {
         isTriggered Second_Col = Second_Trigger.GetComponent<isTriggered>();
-        
-        if (col.gameObject.name == "Player" && Second_Col.isEntered && col == GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>())
-        {
+
+        if (col.gameObject.name == "Player" && Second_Col.isEntered && col == GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>()) {
             // PLACE YOUT FUNCTIONS HERE XAV!!!!
             NextCameraSwitch();
-            
+
             //Debug.Log("TEST");
             //TEST: When player leaves Bedroom items will be swapped
-            if (CurrentCamera.name != "BedroomCamera")
-            {
+            if (CurrentCamera.name != "BedroomCamera") {
                 EventHandler.GetComponent<ItemSwap>().SwapItems();
             }
         }
     }
-    private void FixedUpdate()
-    {
-        Transform CamTarget = GameObject.Find("CamTarget").GetComponent<Transform>();
-        CurrentCamera.transform.LookAt(CamTarget.transform);
+    private void FixedUpdate() {
+        transform.LookAt(CamTarget.transform);
     }
 
-    
 }
