@@ -6,14 +6,16 @@ public class CameraController : MonoBehaviour {
     public Transform camTarget;
 
     public Camera startCamera;
+
+    float rotSpeed = 1f;
     List<Camera> cameras;
 
     // Start is called before the first frame update
     void Start() {
-        cameras = new List<Camera>(FindObjectsOfType<Camera>());
+        cameras = new List<Camera>(Resources.FindObjectsOfTypeAll(typeof(Camera)) as Camera[]);
 
         foreach (Camera c in cameras) {
-            if (c.enabled == true) {
+            if (c.gameObject.activeSelf == true) {
                 startCamera = c;
                 break;
             }
@@ -26,9 +28,12 @@ public class CameraController : MonoBehaviour {
 
     // Update is called once per frame
 
-    private void FixedUpdate() {
+    private void LateUpdate() {
         foreach (Camera c in cameras) {
-            c.transform.forward = camTarget.transform.position - c.transform.position;
+            if (c.gameObject.activeSelf == true) {
+                c.transform.forward = camTarget.transform.position - c.transform.position;
+            }
+
         }
     }
 }

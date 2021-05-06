@@ -10,17 +10,22 @@ namespace InteractionSystem {
 
         public Canvas canvas;
 
+        public Animator anim;
+
         // Start is called before the first frame update
         void Start() {
             canvas.enabled = false;
+            anim = GetComponent<Animator>();
         }
 
         // Update is called once per frame
         void Update() {
             // if the interact button is pressed
-            if (Input.GetButtonUp("Interact")) {
+            if (Input.GetButtonUp("Interact") && currentCollider != null) {
                 // run the interaction script
                 Interact();
+            } else {
+                anim.ResetTrigger("Pickup");
             }
         }
 
@@ -34,6 +39,8 @@ namespace InteractionSystem {
                 // get the tag of the collider
                 currentCollider.GetComponent<Interactable>().interact.Invoke();
             }
+
+            PlayAnimation();
         }
 
         /// <summary>
@@ -59,6 +66,10 @@ namespace InteractionSystem {
                 currentCollider = null;
             }
             canvas.enabled = false;
+        }
+
+        void PlayAnimation() {
+            anim.SetTrigger("Pickup");
         }
     }
 }

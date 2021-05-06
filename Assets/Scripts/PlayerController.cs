@@ -9,6 +9,12 @@ public class PlayerController : MonoBehaviour {
 
     public bool playerEnabled = true;
 
+    public Animator anim;
+
+    void Start() {
+        anim = GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update() {
         ControlPlayer();
@@ -25,7 +31,7 @@ public class PlayerController : MonoBehaviour {
             movement = new Vector3(0, 0, Input.GetAxis("Vertical"));
             movement = transform.TransformDirection(movement);
             movement *= playerSpeed * Time.deltaTime;
-            GetComponent<Walk>().RunAnimations();
+            RunAnimations();
             transform.Rotate(0, Input.GetAxis("Horizontal") * speedRot * Time.deltaTime, 0);
             controller.Move(movement);
         }
@@ -33,5 +39,10 @@ public class PlayerController : MonoBehaviour {
 
     public void SetControllable(bool controllable) {
         playerEnabled = controllable;
+    }
+
+    public void RunAnimations() {
+        anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
+        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
     }
 }
