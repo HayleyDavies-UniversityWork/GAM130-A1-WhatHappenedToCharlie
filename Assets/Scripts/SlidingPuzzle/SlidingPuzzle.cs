@@ -9,7 +9,9 @@ namespace Puzzles {
         public enum Difficulty {
             Easy = 25,
             Medium = 50,
-            Hard = 100
+            Hard = 100,
+
+            Expert = 1000
         }
 
         public Difficulty boardMovementCount = Difficulty.Easy;
