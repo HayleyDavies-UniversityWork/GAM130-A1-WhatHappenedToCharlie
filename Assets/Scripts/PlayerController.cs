@@ -15,13 +15,17 @@ public class PlayerController : MonoBehaviour {
     }
 
     void ControlPlayer() {
-        if (playerEnabled) {
-            CharacterController controller = GetComponent<CharacterController>();
-            GetComponent<Walk>().RunAnimations();
+        CharacterController controller = GetComponent<CharacterController>();
+        // DO NOT REMOVE
+        // IF YOU DO, THE CAMERA WILL BOUNCE.
+        // WHY? NO IDEA!
+        controller.Move(Vector3.zero);
 
+        if (playerEnabled) {
             movement = new Vector3(0, 0, Input.GetAxis("Vertical"));
             movement = transform.TransformDirection(movement);
             movement *= playerSpeed * Time.deltaTime;
+            GetComponent<Walk>().RunAnimations();
             transform.Rotate(0, Input.GetAxis("Horizontal") * speedRot * Time.deltaTime, 0);
             controller.Move(movement);
         }
