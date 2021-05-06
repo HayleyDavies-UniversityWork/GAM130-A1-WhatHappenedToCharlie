@@ -3014,7 +3014,7 @@ PrefabInstance:
     - target: {fileID: 8189788877871324071, guid: f434d1c64f537a146acbd6ac864f058e,
         type: 3}
       propertyPath: boardMovementCount
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8189788877871324071, guid: f434d1c64f537a146acbd6ac864f058e,
         type: 3}
