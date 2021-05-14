@@ -23,6 +23,10 @@ namespace ClickPuzzle {
             previousCamera.enabled = false;
             puzzleTrigger = trigger;
             GetComponent<Camera>().enabled = true;
+
+            foreach (Clickable c in clickOrder) {
+                c.enabled = true;
+            }
         }
 
         // Start is called before the first frame update
@@ -34,7 +38,7 @@ namespace ClickPuzzle {
             // add a new item for each item in the clickOrder array
             // set the puzzle of each of the clicks to be this script
             for (int i = 0; i < clickOrder.Count; i++) {
-                currentClicks.Add(null);
+                clickOrder[i].enabled = false;
                 clickOrder[i].puzzle = this;
             }
         }
@@ -85,6 +89,10 @@ namespace ClickPuzzle {
         public void ClosePuzzle() {
             GetComponent<Camera>().enabled = false;
             previousCamera.enabled = true;
+
+            foreach (Clickable c in clickOrder) {
+                c.enabled = false;
+            }
         }
     }
 }
