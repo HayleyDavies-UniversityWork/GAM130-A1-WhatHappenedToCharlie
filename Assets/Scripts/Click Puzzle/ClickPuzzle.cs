@@ -10,11 +10,24 @@ namespace ClickPuzzle {
         // the currently clicked objects
         public List<Clickable> currentClicks;
 
+        // the camera used before this one
+        public Camera previousCamera;
+
         // the message to be broadcast once the puzzle is completed
         public string fungusCompletionMessage = "ClickPuzzleComplete";
 
+        GameObject puzzleTrigger;
+
+        public void StartPuzzle(GameObject trigger) {
+            previousCamera = Camera.main;
+            previousCamera.enabled = false;
+            puzzleTrigger = trigger;
+            GetComponent<Camera>().enabled = true;
+        }
+
         // Start is called before the first frame update
         void Start() {
+            GetComponent<Camera>().enabled = false;
             // create a new list for the current clicks
             currentClicks = new List<Clickable>(clickOrder.Count);
 
@@ -65,6 +78,13 @@ namespace ClickPuzzle {
         void GameWin() {
             Fungus.Flowchart.BroadcastFungusMessage(fungusCompletionMessage);
             Debug.Log(fungusCompletionMessage);
+            Destroy(puzzleTrigger);
+            ClosePuzzle();
+        }
+
+        public void ClosePuzzle() {
+            GetComponent<Camera>().enabled = false;
+            previousCamera.enabled = true;
         }
     }
 }

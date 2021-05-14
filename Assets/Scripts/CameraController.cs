@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
 
     private void LateUpdate() {
         foreach (Camera c in cameras) {
-            if (c.gameObject.activeSelf == true) {
+            if (c.gameObject.activeSelf == true && c.CompareTag("MainCamera")) {
                 c.transform.forward = camTarget.transform.position - c.transform.position;
             }
 

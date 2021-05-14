@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ClickPuzzle;
 using InventorySystem;
 using Puzzles;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace InteractionSystem {
         Pickup,
         OpenPuzzle,
         SwitchLights,
-        TornPaperPuzzle
+        TornPaperPuzzle,
+        ClickPuzzle
     }
 
     public class Interactable : MonoBehaviour {
@@ -22,6 +24,8 @@ namespace InteractionSystem {
         public GameObject puzzle;
 
         public GameObject TornPaper;
+
+        public Camera puzzleCamera;
 
         // Start is called before the first frame update
         void Start() {
@@ -37,6 +41,9 @@ namespace InteractionSystem {
                     break;
                 case InteractionType.TornPaperPuzzle:
                     interact += OpenTornPaperPuzzle;
+                    break;
+                case InteractionType.ClickPuzzle:
+                    interact += OpenClickPuzzle;
                     break;
             }
 
@@ -65,8 +72,12 @@ namespace InteractionSystem {
         }
 
         public void OpenTornPaperPuzzle() {
-            var puzzle = Instantiate(TornPaper);
+            puzzle = Instantiate(TornPaper);
             puzzle.transform.parent = transform;
+        }
+
+        public void OpenClickPuzzle() {
+            puzzleCamera.GetComponent<ClickPuzzle.ClickPuzzle>().StartPuzzle(gameObject);
         }
     }
 }
