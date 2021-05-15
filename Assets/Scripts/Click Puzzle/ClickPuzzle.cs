@@ -1,39 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ClickPuzzle {
     public class ClickPuzzle : MonoBehaviour {
-        // the order, and objects that will be clicked
-        public List<Clickable> clickOrder;
-
-        // the currently clicked objects
-        public List<Clickable> currentClicks;
-
-        // the camera used before this one
-        public Camera previousCamera;
-
         // the message to be broadcast once the puzzle is completed
         public string fungusCompletionMessage = "ClickPuzzleComplete";
 
-        GameObject puzzleTrigger;
+        // the order, and objects that will be clicked
+        public List<Clickable> clickOrder;
 
-        public void StartPuzzle(GameObject trigger) {
-            previousCamera = Camera.main;
+        public UnityEvent clickAction;
+
+        // the currently clicked objects
+        private List<Clickable> currentClicks;
+
+        // the camera used before this one
+        private Camera previousCamera;
+
+        private GameObject puzzleTrigger;
+
+        public void StartPuzzle(GameObject trigger, Camera previousCam) {
+            previousCamera = previousCam;
             previousCamera.enabled = false;
             puzzleTrigger = trigger;
             GetComponent<Camera>().enabled = true;
 
             foreach (Clickable c in clickOrder) {
                 c.enabled = true;
+                c.SetMaterial(c.defaultMaterial);
             }
+
+            // create a new list for the current clicks
+            currentClicks = new List<Clickable>(clickOrder.Count);
         }
 
         // Start is called before the first frame update
         void Start() {
+            clickAction.Invoke();
             GetComponent<Camera>().enabled = false;
-            // create a new list for the current clicks
-            currentClicks = new List<Clickable>(clickOrder.Count);
 
             // add a new item for each item in the clickOrder array
             // set the puzzle of each of the clicks to be this script
@@ -48,17 +54,19 @@ namespace ClickPuzzle {
         /// </summary>
         /// <param name="clickable">the object that has been clicked</param>
         public void ObjectClicked(Clickable clickable) {
-            // add the object to the end of the list
-            currentClicks.Add(clickable);
-            // whilst the there are more objects in the currentClicks list
-            while (currentClicks.Count > clickOrder.Count) {
-                // remove the first index
-                currentClicks.RemoveAt(0);
-            }
+            // if the object doesn't already exist in the list
+            if (!currentClicks.Contains(clickable)) {
+                // add the object to the end of the list
+                currentClicks.Add(clickable);
 
-            // check if the game is complete, if it is, run GameWin()
-            if (isComplete()) {
-                GameWin();
+                // check if the game is complete, if it is, run GameWin()
+                if (clickOrder.Count == currentClicks.Count) {
+                    if (isComplete()) {
+                        GameWin();
+                    } else {
+                        StartPuzzle(puzzleTrigger, previousCamera);
+                    }
+                }
             }
         }
 
@@ -94,5 +102,14 @@ namespace ClickPuzzle {
                 c.enabled = false;
             }
         }
+
+        public void ChangeMaterial(Material material) {
+            foreach (Clickable c in clickOrder) {
+                c.clickMaterial = material;
+                c.action += c.ChangeMaterial;
+                c.defaultMaterial = c.GetComponent<MeshRenderer>().material;
+            }
+        }
+
     }
 }

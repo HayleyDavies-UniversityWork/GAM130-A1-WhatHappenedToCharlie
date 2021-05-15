@@ -77,7 +77,7 @@ namespace InteractionSystem {
         }
 
         public void OpenClickPuzzle() {
-            puzzleCamera.GetComponent<ClickPuzzle.ClickPuzzle>().StartPuzzle(gameObject);
+            puzzleCamera.GetComponent<ClickPuzzle.ClickPuzzle>().StartPuzzle(gameObject, Camera.main);
         }
     }
 }
