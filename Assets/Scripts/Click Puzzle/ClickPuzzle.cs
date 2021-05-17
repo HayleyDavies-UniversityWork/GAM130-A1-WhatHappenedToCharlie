@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InventorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace ClickPuzzle {
     public class ClickPuzzle : MonoBehaviour {
+        public InventoryItem requiredItem;
         // the message to be broadcast once the puzzle is completed
         public string fungusCompletionMessage = "ClickPuzzleComplete";
 
@@ -14,26 +16,31 @@ namespace ClickPuzzle {
         public UnityEvent clickAction;
 
         // the currently clicked objects
-        private List<Clickable> currentClicks;
+        public List<Clickable> currentClicks;
 
         // the camera used before this one
         private Camera previousCamera;
 
         private GameObject puzzleTrigger;
-
         public void StartPuzzle(GameObject trigger, Camera previousCam) {
-            previousCamera = previousCam;
-            previousCamera.enabled = false;
-            puzzleTrigger = trigger;
-            GetComponent<Camera>().enabled = true;
+            if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
+                Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
+            } else {
+                // create a new list for the current clicks
+                currentClicks = new List<Clickable>(clickOrder.Count);
 
-            foreach (Clickable c in clickOrder) {
-                c.enabled = true;
-                c.SetMaterial(c.defaultMaterial);
+                previousCamera = previousCam;
+                previousCamera.enabled = false;
+                puzzleTrigger = trigger;
+                GetComponent<Camera>().enabled = true;
+
+                foreach (Clickable c in clickOrder) {
+                    c.enabled = true;
+                    c.action.Invoke();
+                }
+
+                puzzleTrigger.GetComponent<Collider>().enabled = false;
             }
-
-            // create a new list for the current clicks
-            currentClicks = new List<Clickable>(clickOrder.Count);
         }
 
         // Start is called before the first frame update
@@ -101,13 +108,22 @@ namespace ClickPuzzle {
             foreach (Clickable c in clickOrder) {
                 c.enabled = false;
             }
+
+            puzzleTrigger.GetComponent<Collider>().enabled = true;
         }
 
         public void ChangeMaterial(Material material) {
             foreach (Clickable c in clickOrder) {
                 c.clickMaterial = material;
-                c.action += c.ChangeMaterial;
+                c.action.AddListener(() => c.ChangeMaterial());
                 c.defaultMaterial = c.GetComponent<MeshRenderer>().material;
+            }
+        }
+
+        public void ToggleParticles() {
+            Debug.Log("ToggleParticles");
+            foreach (Clickable c in clickOrder) {
+                c.action.AddListener(() => c.ToggleParticles());
             }
         }
 
