@@ -27,8 +27,11 @@ namespace InteractionSystem {
 
         public Camera puzzleCamera;
 
+        private Material defaultMaterial;
+
         // Start is called before the first frame update
         void Start() {
+            defaultMaterial = GetComponent<Renderer>().material;
             switch (interactionType) {
                 case InteractionType.Pickup:
                     interact += PickupInteraction;
@@ -78,6 +81,10 @@ namespace InteractionSystem {
 
         public void OpenClickPuzzle() {
             puzzleCamera.GetComponent<ClickPuzzle.ClickPuzzle>().StartPuzzle(gameObject, Camera.main);
+        }
+
+        public void ResetMaterial() {
+            GetComponent<Renderer>().material = defaultMaterial;
         }
     }
 }
