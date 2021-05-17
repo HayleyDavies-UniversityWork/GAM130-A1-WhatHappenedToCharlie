@@ -20,12 +20,6 @@ namespace InventorySystem {
                 // log a warning
                 Debug.LogWarning($"[WARNING]: variable 'item' not defined in 'InventoryObject' class on object '{transform.name}'.");
             }
-
-            // create a spehere collider with a center of 0,0,0 and a radius of the interactable range
-            SphereCollider sc = gameObject.AddComponent<SphereCollider>();
-            sc.center = Vector3.zero;
-            sc.radius = interactableRange;
-            sc.isTrigger = true;
         }
     }
 }
