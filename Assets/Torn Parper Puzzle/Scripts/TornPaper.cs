@@ -27,6 +27,7 @@ public class TornPaper : MonoBehaviour {
     private void Start()
     {
         SliceImage();
+        Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
     }
 
     private void Update() {
@@ -49,6 +50,7 @@ public class TornPaper : MonoBehaviour {
             Destroy(this.transform.parent.gameObject);
         }
         Destroy(this.gameObject);
+        Fungus.Flowchart.BroadcastFungusMessage("EnablePlayerControls");
     }
 
     public void MissingPieceCheck()
@@ -118,6 +120,9 @@ public class TornPaper : MonoBehaviour {
             new_array[i] = pieces[i].GetComponent<Image>();
             new_array[i].sprite = images[i];
         }
+
+        missingPiece = pieces[1];
+        missingPiece.SetActive(false);
         //GameObject Pieces = GameObject.Find("Pieces");
         //GameObject[] pieces = GameObject.FindGameObjectsWithTag("TPP_Piece");
         //Sprite[] images = Pieces.GetComponentsInChildren<Sprite>();

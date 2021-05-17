@@ -12,6 +12,8 @@ namespace InteractionSystem {
 
         public Animator anim;
 
+        public bool interactable;
+
         // Start is called before the first frame update
         void Start() {
             canvas.enabled = false;
@@ -21,7 +23,7 @@ namespace InteractionSystem {
         // Update is called once per frame
         void Update() {
             // if the interact button is pressed
-            if (Input.GetButtonUp("Interact") && currentCollider != null) {
+            if (Input.GetButtonUp("Interact") && currentCollider != null && interactable) {
                 // run the interaction script
                 Interact();
             } else {
@@ -70,6 +72,11 @@ namespace InteractionSystem {
 
         void PlayAnimation() {
             anim.SetTrigger("Pickup");
+        }
+
+        public void SetBool(bool var)
+        {
+            interactable = var;
         }
     }
 }
