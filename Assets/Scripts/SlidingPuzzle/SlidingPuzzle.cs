@@ -92,7 +92,7 @@ namespace Puzzles {
 
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
-            ShuffleTiles((int) boardMovementCount, blankPos, blankPos);
+            StartCoroutine(ShuffleTiles((int) boardMovementCount, blankPos, blankPos));
             watch.Stop();
 
             Debug.Log($"Execution Time: {watch.ElapsedMilliseconds} ms");
@@ -169,7 +169,7 @@ namespace Puzzles {
             Vector2 position = new Vector2(xOffset * drawTileSize, yOffset * drawTileSize);
             self.transform.localPosition = position;
 
-            Debug.Log($"[{oldPos.x}, {oldPos.y}] moving to [{newPos.x}, {newPos.y}]");
+            //Debug.Log($"[{oldPos.x}, {oldPos.y}] moving to [{newPos.x}, {newPos.y}]");
 
             puzzleBoard.board1d = puzzleBoard.board2d.Convert1D();
 
@@ -177,14 +177,15 @@ namespace Puzzles {
             self.onClick.AddListener(() => ClickTileButton(self, newPos));
         }
 
-        void ShuffleTiles(int movements, Vector2Int blankPos, Vector2Int previousBlankPos) {
+        IEnumerator ShuffleTiles(int movements, Vector2Int blankPos, Vector2Int previousBlankPos) {
+            yield return new WaitForSeconds(0);
             movements--;
 
             Vector2Int clickPos = GetAdjacentTile(blankPos, previousBlankPos);
 
             buttonArray2D[clickPos.x, clickPos.y].onClick.Invoke();
             if (movements > 0) {
-                ShuffleTiles(movements, clickPos, blankPos);
+                StartCoroutine(ShuffleTiles(movements, clickPos, blankPos));
             }
             shuffleMode = false;
         }
