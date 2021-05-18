@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using ClickPuzzle;
+using Fungus;
 using InventorySystem;
 using Puzzles;
 using UnityEngine;
@@ -56,8 +57,14 @@ namespace InteractionSystem {
         /// PickupInteraction handles interactions with inventory items
         /// </summary>
         void PickupInteraction() {
+            Flowchart flowchart = GameObject.Find("BrainFlowchart").GetComponent<Flowchart>();
+
             // get the item
             InventoryItem item = GetComponent<InventoryObject>().item;
+
+            flowchart.SetStringVariable("LastItemPickup", item.Name.ToLower());
+            Flowchart.BroadcastFungusMessage("PickedUpItem");
+
             // add the item to the inventory
             Inventory.Add(item);
             // destory the collider object
