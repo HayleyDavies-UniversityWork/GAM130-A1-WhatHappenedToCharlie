@@ -33,6 +33,8 @@ namespace Puzzles {
 
         bool shuffleMode = true;
 
+        public GameObject closeButton;
+
         // Start is called before the first frame update
         void Start() {
 
@@ -111,6 +113,12 @@ namespace Puzzles {
                     CreateNewTile(i, j, childCanvas);
                 }
             }
+            Vector3 pos = closeButton.transform.position;
+            closeButton = Instantiate(closeButton);
+            closeButton.transform.parent = childCanvas.transform;
+            closeButton.transform.localPosition = pos;
+            Button close = closeButton.GetComponent<Button>();
+            close.onClick.AddListener(() => ClosePuzzle());
         }
 
         Canvas CreateBlankCanvas() {
@@ -241,6 +249,10 @@ namespace Puzzles {
 
             Fungus.Flowchart.BroadcastFungusMessage(CompletionFungusMessage);
             return true;
+        }
+
+        public void ClosePuzzle() {
+            gameObject.SetActive(false);
         }
     }
 }
