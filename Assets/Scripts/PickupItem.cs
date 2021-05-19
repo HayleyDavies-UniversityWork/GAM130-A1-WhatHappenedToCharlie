@@ -21,9 +21,12 @@ public class PickupItem : MonoBehaviour {
 
     //This is the bit that only lets the player trigger it, the player needs to be on the "PlayerObject" layer
     private void OnTriggerEnter(Collider other) {
-        // Disable the collider immediately to prevent this method triggering again.
-        col.enabled = false;
-        Flowchart.BroadcastFungusMessage(pickupMessage);
-        //This is the default fungus message that will be shown, keeping it the same as pauls in case things break
+        if (other.CompareTag("Player")) {
+            // Disable the collider immediately to prevent this method triggering again.
+            col.enabled = false;
+            Flowchart.BroadcastFungusMessage(pickupMessage);
+            //This is the default fungus message that will be shown, keeping it the same as pauls in case things break
+            Debug.Log($"Triggered by: {other.name}");
+        }
     }
 }
