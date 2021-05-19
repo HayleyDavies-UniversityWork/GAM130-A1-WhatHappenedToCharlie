@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Piece : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public int offset = 30;
     public GameObject piecePlace;
     private Vector2 lastMousePosition;
     private bool isDragable = true;
@@ -41,18 +42,17 @@ public class Piece : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHan
     {
         Vector3 pieceVec = this.transform.position;
         Vector3 placeVec = piecePlace.GetComponent<BoxCollider2D>().transform.position;
-        if (Mathf.Abs(pieceVec.x - placeVec.x) <= 10 &&
-            Mathf.Abs(pieceVec.y - placeVec.y) <= 10)
+        if (Mathf.Abs(pieceVec.x - placeVec.x) <= offset &&
+            Mathf.Abs(pieceVec.y - placeVec.y) <= offset)
         {
             this.gameObject.transform.position = piecePlace.transform.position;
             isDragable = false;
             isDone = true;
             
-            //Debug.Log("In place");
+            
 
         }
-        //Debug.Log(this.transform.position);
-        //Debug.Log(piecePlace.GetComponent<BoxCollider2D>().transform.position);
+
     }
 
     private bool IsRectTransformInsideSreen(RectTransform rectTransform)
