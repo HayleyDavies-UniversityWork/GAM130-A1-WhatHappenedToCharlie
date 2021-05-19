@@ -119,7 +119,6 @@ public class TornPaper : MonoBehaviour {
         missingPiece.SetActive(false);
 
         GameObject go = GameObject.Find("Vase-PieceOfPaper");
-        go.GetComponent<Collider>().enabled = true;
         InventoryObject io = go.GetComponent<InventoryObject>();
         io.item.Icon = missingPiece.GetComponent<Image>().sprite;
         //GameObject Pieces = GameObject.Find("Pieces");
