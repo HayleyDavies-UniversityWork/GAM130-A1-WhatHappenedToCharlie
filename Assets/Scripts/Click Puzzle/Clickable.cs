@@ -40,10 +40,8 @@ namespace ClickPuzzle {
         }
 
         void OnMouseExit() {
-            if (!puzzle.currentClicks.Contains(this)) {
-                Debug.Log($"{name} not hovered over.");
-                SetMaterial(defaultMaterial);
-            }
+            Debug.Log($"{name} not hovered over.");
+            SetMaterial(defaultMaterial);
         }
 
         public void ChangeMaterial() {

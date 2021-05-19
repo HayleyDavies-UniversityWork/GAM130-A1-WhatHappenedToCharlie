@@ -24,14 +24,13 @@ namespace ClickPuzzle {
 
         private GameObject puzzleTrigger;
 
+        private Canvas UI;
+
         string caller = "";
         public void StartPuzzle(GameObject trigger, Camera previousCam) {
             if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
                 Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
             } else {
-                // create a new list for the current clicks
-                currentClicks = new List<Clickable>(clickOrder.Count);
-
                 previousCamera = previousCam;
                 previousCamera.enabled = false;
                 puzzleTrigger = trigger;
@@ -39,15 +38,20 @@ namespace ClickPuzzle {
 
                 foreach (Clickable c in clickOrder) {
                     c.enabled = true;
-                    c.clickAction.Invoke();
                 }
 
                 puzzleTrigger.GetComponent<Collider>().enabled = false;
+                UI.enabled = true;
             }
         }
 
         // Start is called before the first frame update
         void Start() {
+            // create a new list for the current clicks
+            currentClicks = new List<Clickable>(clickOrder.Count);
+            UI = GetComponentInChildren<Canvas>();
+
+            UI.enabled = false;
             caller = "click";
             clickAction.Invoke();
             caller = "hover";
@@ -60,6 +64,10 @@ namespace ClickPuzzle {
             for (int i = 0; i < clickOrder.Count; i++) {
                 clickOrder[i].enabled = false;
                 clickOrder[i].puzzle = this;
+            }
+
+            foreach (Clickable c in clickOrder) {
+                c.clickAction.Invoke();
             }
         }
 
@@ -78,6 +86,10 @@ namespace ClickPuzzle {
                     if (isComplete()) {
                         GameWin();
                     } else {
+                        currentClicks = new List<Clickable>(clickOrder.Count);
+                        foreach (Clickable c in clickOrder) {
+                            c.clickAction.Invoke();
+                        }
                         StartPuzzle(puzzleTrigger, previousCamera);
                     }
                 }
@@ -117,6 +129,8 @@ namespace ClickPuzzle {
             }
 
             puzzleTrigger.GetComponent<Collider>().enabled = true;
+            UI.enabled = false;
+
         }
 
         public void ChangeMaterial(Material material) {
