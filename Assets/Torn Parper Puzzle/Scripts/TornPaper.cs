@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Fungus;
 using InventorySystem;
+using InventorySystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -113,8 +114,14 @@ public class TornPaper : MonoBehaviour {
             new_array[i].sprite = images[i];
         }
 
-        missingPiece = pieces[1];
+        int pieceMissingNo = Random.Range(0, pieces.Length);
+        missingPiece = pieces[pieceMissingNo];
         missingPiece.SetActive(false);
+
+        GameObject go = GameObject.Find("Vase-PieceOfPaper");
+        go.GetComponent<Collider>().enabled = true;
+        InventoryObject io = go.GetComponent<InventoryObject>();
+        io.item.Icon = missingPiece.GetComponent<Image>().sprite;
         //GameObject Pieces = GameObject.Find("Pieces");
         //GameObject[] pieces = GameObject.FindGameObjectsWithTag("TPP_Piece");
         //Sprite[] images = Pieces.GetComponentsInChildren<Sprite>();
