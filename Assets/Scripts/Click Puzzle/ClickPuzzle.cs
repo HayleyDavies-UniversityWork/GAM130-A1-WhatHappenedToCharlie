@@ -14,6 +14,7 @@ namespace ClickPuzzle {
         public List<Clickable> clickOrder;
 
         public UnityEvent clickAction;
+        public UnityEvent hoverAction;
 
         // the currently clicked objects
         public List<Clickable> currentClicks;
@@ -22,6 +23,8 @@ namespace ClickPuzzle {
         private Camera previousCamera;
 
         private GameObject puzzleTrigger;
+
+        string caller = "";
         public void StartPuzzle(GameObject trigger, Camera previousCam) {
             if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
                 Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
@@ -36,7 +39,7 @@ namespace ClickPuzzle {
 
                 foreach (Clickable c in clickOrder) {
                     c.enabled = true;
-                    c.action.Invoke();
+                    c.clickAction.Invoke();
                 }
 
                 puzzleTrigger.GetComponent<Collider>().enabled = false;
@@ -45,7 +48,11 @@ namespace ClickPuzzle {
 
         // Start is called before the first frame update
         void Start() {
+            caller = "click";
             clickAction.Invoke();
+            caller = "hover";
+            hoverAction.Invoke();
+
             GetComponent<Camera>().enabled = false;
 
             // add a new item for each item in the clickOrder array
@@ -114,8 +121,12 @@ namespace ClickPuzzle {
 
         public void ChangeMaterial(Material material) {
             foreach (Clickable c in clickOrder) {
-                c.clickMaterial = material;
-                c.action.AddListener(() => c.ChangeMaterial());
+                c.changeMaterial = material;
+                if (caller == "click") {
+                    c.clickAction.AddListener(() => c.ChangeMaterial());
+                } else if (caller == "hover") {
+                    c.hoverAction.AddListener(() => c.ChangeMaterial());
+                }
                 c.defaultMaterial = c.GetComponent<MeshRenderer>().material;
             }
         }
@@ -123,7 +134,11 @@ namespace ClickPuzzle {
         public void ToggleParticles() {
             Debug.Log("ToggleParticles");
             foreach (Clickable c in clickOrder) {
-                c.action.AddListener(() => c.ToggleParticles());
+                if (caller == "click") {
+                    c.clickAction.AddListener(() => c.ToggleParticles());
+                } else if (caller == "hover") {
+                    c.hoverAction.AddListener(() => c.ToggleParticles());
+                }
             }
         }
 
