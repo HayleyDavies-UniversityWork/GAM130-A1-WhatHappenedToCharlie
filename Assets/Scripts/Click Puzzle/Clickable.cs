@@ -8,10 +8,17 @@ namespace ClickPuzzle {
         // the puzzle this object is part of
         public ClickPuzzle puzzle;
 
-        public UnityEvent action;
+        public UnityEvent clickAction;
+        public UnityEvent hoverAction;
 
-        public Material clickMaterial;
+        public Material changeMaterial;
         public Material defaultMaterial;
+        MeshRenderer r;
+
+        void Start() {
+            r = GetComponent<MeshRenderer>();
+            defaultMaterial = r.material;
+        }
 
         /// <summary>
         /// when the object is clicked
@@ -19,23 +26,36 @@ namespace ClickPuzzle {
         void OnMouseDown() {
             if (!puzzle.currentClicks.Contains(this)) {
                 Debug.Log(name);
-                action.Invoke();
+                clickAction.Invoke();
                 // run the object clicked function for the puzzle
                 puzzle.ObjectClicked(this);
             }
         }
 
+        void OnMouseEnter() {
+            if (!puzzle.currentClicks.Contains(this)) {
+                Debug.Log($"{name} hovered over.");
+                SetMaterial(changeMaterial);
+            }
+        }
+
+        void OnMouseExit() {
+            if (!puzzle.currentClicks.Contains(this)) {
+                Debug.Log($"{name} not hovered over.");
+                SetMaterial(defaultMaterial);
+            }
+        }
+
         public void ChangeMaterial() {
-            SetMaterial(clickMaterial);
+            if (r.material == changeMaterial) {
+                r.material = defaultMaterial;
+            } else {
+                r.material = changeMaterial;
+            }
         }
 
         public void SetMaterial(Material material) {
-            MeshRenderer r = GetComponent<MeshRenderer>();
-            if (r.material == material) {
-                r.material = defaultMaterial;
-            } else {
-                r.material = material;
-            }
+            r.material = material;
         }
 
         public void ToggleParticles() {
