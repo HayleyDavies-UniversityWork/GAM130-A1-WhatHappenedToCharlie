@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Lighter
   Description: This sets things on fire.
-  Icon: {fileID: 21300020, guid: 9b530529fca8558449c2af2b412dbcb9, type: 3}
+  Icon: {fileID: 21300000, guid: 413c7704f0304cf41943eeefefde0d2d, type: 3}

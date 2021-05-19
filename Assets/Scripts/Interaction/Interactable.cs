@@ -82,7 +82,11 @@ namespace InteractionSystem {
         }
 
         public void OpenTornPaperPuzzle() {
-            puzzle = Instantiate(TornPaper);
+            if (puzzle == null) {
+                puzzle = Instantiate(TornPaper);
+            } else {
+                puzzle.SetActive(true);
+            }
             puzzle.transform.parent = transform;
         }
 

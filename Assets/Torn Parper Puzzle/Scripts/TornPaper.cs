@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using InventorySystem;
 using UnityEngine;
 using UnityEngine.UI;
-using Fungus;
 
 public class TornPaper : MonoBehaviour {
     public int Score = 0;
@@ -24,8 +24,7 @@ public class TornPaper : MonoBehaviour {
 
     public int ImageSize;
 
-    private void Start()
-    {
+    private void Start() {
         SliceImage();
         Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
     }
@@ -35,38 +34,36 @@ public class TornPaper : MonoBehaviour {
 
         CheckPiecesPlace();
 
-        
         if (Score >= ImageSize * ImageSize) {
-
             Fungus.Flowchart.BroadcastFungusMessage("Torn Paper Puzzle Complete");
             Destroy(this.gameObject);
         }
     }
     public void RestartPuzzle() {
-        this.gameObject.SetActive(false);
-        if (Score == ImageSize) {
-            Inventory.Remove("Piece of paper");
-            FindObjectOfType<InventroyButton>().ReloadItems();
-            Destroy(this.transform.parent.gameObject);
+        // if (Score == ImageSize) {
+        //     Inventory.Remove("Piece of paper");
+        //     FindObjectOfType<InventroyButton>().ReloadItems();
+        //     Destroy(this.transform.parent.gameObject);
+        // } else
+        if (Score == ImageSize * ImageSize - 1) {
+            Fungus.Flowchart.BroadcastFungusMessage("MissingPuzzlePiece");
         }
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
         Fungus.Flowchart.BroadcastFungusMessage("EnablePlayerControls");
+        this.gameObject.SetActive(false);
     }
 
-    public void MissingPieceCheck()
-    {
-        if (Inventory.ItemExists("Piece of paper"))
-        {
+    public void MissingPieceCheck() {
+        if (Inventory.ItemExists("Piece of paper")) {
+            Inventory.Remove("Piece of paper");
             missingPiece.SetActive(true);
         }
     }
-    public void CheckPiecesPlace()
-    {
+
+    public void CheckPiecesPlace() {
         GameObject[] piece = GameObject.FindGameObjectsWithTag("TPP_Piece");
-        foreach (var item in piece)
-        {
-            if (item.GetComponent<Piece>().isDone)
-            {
+        foreach (var item in piece) {
+            if (item.GetComponent<Piece>().isDone) {
                 Score += 1;
                 item.tag = "Untagged";
             }
@@ -74,8 +71,7 @@ public class TornPaper : MonoBehaviour {
         }
     }
 
-    public void SliceImage()
-    {
+    public void SliceImage() {
 
         int imageWidth = RawImage.width / ImageSize;
         int imageHeight = RawImage.height / ImageSize;
@@ -90,11 +86,8 @@ public class TornPaper : MonoBehaviour {
         GameObject[] piecePlaces = new GameObject[PieceSize];
         int count = 0;
 
-        for (int i = 0; i < ImageSize; i++)
-        {
-            for (int j = 0; j < ImageSize ; j++)
-            {
-
+        for (int i = 0; i < ImageSize; i++) {
+            for (int j = 0; j < ImageSize; j++) {
 
                 Texture2D texture = new Texture2D(imageWidth, imageHeight);
                 texture.SetPixels(RawImage.GetPixels(i * imageWidth, j * imageHeight, imageWidth, imageHeight));
@@ -103,15 +96,14 @@ public class TornPaper : MonoBehaviour {
                 Sprite sprite = Sprite.Create(texture, rect, new Vector2(0, 0), .2f);
                 sprite.name = $"({i}, {j})";
                 images[count] = sprite;
-                
+
                 count++;
             }
         }
 
         Image[] new_array = new Image[images.Length];
         Piece[] new_array2 = new Piece[images.Length];
-        for (int i = 0; i < images.Length; i++)
-        {
+        for (int i = 0; i < images.Length; i++) {
             piecePlaces[i] = Instantiate(piecePlacePrefab, Panel.transform) as GameObject;
             pieces[i] = Instantiate(piecePrefab, Pieces.transform) as GameObject;
             pieces[i].transform.position = new Vector3(Random.Range(200.0f, 400.0f), Random.Range(200.0f, 400.0f), 0);
@@ -140,5 +132,4 @@ public class TornPaper : MonoBehaviour {
         //}
     }
 
-    
 }

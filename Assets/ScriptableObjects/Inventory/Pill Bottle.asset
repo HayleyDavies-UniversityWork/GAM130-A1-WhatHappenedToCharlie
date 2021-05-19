@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pill Bottle
   Description: My beloveds pill bottle
-  Icon: {fileID: 21300000, guid: c22400d5bd211479099238aaacbd4852, type: 3}
+  Icon: {fileID: 21300000, guid: f2b25d32172bbf0428ffd42915ae3bb6, type: 3}
