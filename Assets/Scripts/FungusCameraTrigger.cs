@@ -24,7 +24,8 @@ public class FungusCameraTrigger : MonoBehaviour {
         if (other.CompareTag("Player")) {
             // Disable the collider immediately to prevent this method triggering again.
             Flowchart.BroadcastFungusMessage(pickupMessage);
-            //This is the default fungus message that will be shown, keeping it the same as pauls in case things break
+            //This is the default fungus message that will be shown, keeping it the same as pauls in case things brea
+            Debug.Log($"{name}: {other.name}");
         }
     }
 }
