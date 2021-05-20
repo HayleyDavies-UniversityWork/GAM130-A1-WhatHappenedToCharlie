@@ -21652,7 +21652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &786159450
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32406,7 +32406,7 @@ PrefabInstance:
     - target: {fileID: 1230474109353432862, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1230474109353432862, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
         type: 3}
@@ -32458,6 +32458,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5622429486979371534, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 7087996020890162731, guid: 8e7060ceecd93d94f9bd5176aaa5d8b3,
+        type: 3}
+    - target: {fileID: 5622429486979371534, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622429486979371534, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d07a1dffe9e68b4dabffe374a3e89fd, type: 2}
     - target: {fileID: 6495725411676082542, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
         type: 3}
       propertyPath: m_Radius
