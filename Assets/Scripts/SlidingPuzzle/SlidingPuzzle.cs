@@ -126,8 +126,11 @@ namespace Puzzles {
             newObject.name = "Sliding Puzzle Canvas";
             newObject.transform.parent = transform;
             Canvas newCanvas = newObject.AddComponent<Canvas>();
+            CanvasScaler canvasScaler = newObject.AddComponent<CanvasScaler>();
             newObject.AddComponent<GraphicRaycaster>();
             newCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvasScaler.referenceResolution = new Vector2(1920, 1080);
 
             return newCanvas;
         }
