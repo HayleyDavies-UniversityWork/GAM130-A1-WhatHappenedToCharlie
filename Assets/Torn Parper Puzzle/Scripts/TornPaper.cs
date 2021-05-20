@@ -25,9 +25,11 @@ public class TornPaper : MonoBehaviour {
 
     public int ImageSize;
 
+    public InventoryItem inventoryItem;
     private void Start() {
         SliceImage();
         Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
+        gameObject.SetActive(false);
     }
 
     private void Update() {
@@ -116,12 +118,8 @@ public class TornPaper : MonoBehaviour {
 
         int pieceMissingNo = Random.Range(0, pieces.Length);
         missingPiece = pieces[pieceMissingNo];
+        inventoryItem.Icon = missingPiece.GetComponent<Image>().sprite;
         missingPiece.SetActive(false);
-
-        GameObject go = GameObject.Find("Vase-PieceOfPaper");
-        InventoryObject io = go.GetComponent<InventoryObject>();
-        io.item.Icon = missingPiece.GetComponent<Image>().sprite;
-
     }
 
 }

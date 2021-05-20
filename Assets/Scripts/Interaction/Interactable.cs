@@ -28,6 +28,8 @@ namespace InteractionSystem {
 
         public Camera puzzleCamera;
 
+        public bool StartOnPlay = false;
+
         private Material defaultMaterial;
 
         // Start is called before the first frame update
@@ -51,6 +53,9 @@ namespace InteractionSystem {
                     break;
             }
 
+            if (StartOnPlay) {
+                interact.Invoke();
+            }
         }
 
         /// <summary>
