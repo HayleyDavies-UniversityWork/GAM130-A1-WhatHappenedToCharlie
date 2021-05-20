@@ -121,21 +121,7 @@ public class TornPaper : MonoBehaviour {
         GameObject go = GameObject.Find("Vase-PieceOfPaper");
         InventoryObject io = go.GetComponent<InventoryObject>();
         io.item.Icon = missingPiece.GetComponent<Image>().sprite;
-        //GameObject Pieces = GameObject.Find("Pieces");
-        //GameObject[] pieces = GameObject.FindGameObjectsWithTag("TPP_Piece");
-        //Sprite[] images = Pieces.GetComponentsInChildren<Sprite>();
-        //foreach (var item in pieces)
-        //{
-        //    for (int X = 0; X < ImageSize; X++)
-        //    {
-        //        for (int Y = 0; Y < ImageSize; Y++)
-        //        {
 
-        //            Image pieceTexture = item.GetComponent<Image>();
-        //            pieceTexture.sprite = pieceImage[X, Y];
-        //        }
-        //    }
-        //}
     }
 
 }
