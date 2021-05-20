@@ -3,7 +3,12 @@ guid: d091f28094e988546b981241e6daa6d8
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Bin_pCube3Mat
+    second: {fileID: 2100000, guid: adad85d77ec265f45beca73894c75a9c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -3,7 +3,12 @@ guid: 364371ab60bb5534698d9c3b11a1dd79
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VoodooDoll_lambert5SG
+    second: {fileID: 2100000, guid: 9f54306f5082fd440a856a528b669622, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

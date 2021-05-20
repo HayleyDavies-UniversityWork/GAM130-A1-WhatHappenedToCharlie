@@ -3,7 +3,12 @@ guid: d3e5a7987ab35d44cbe608884cdea625
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coffee_Table_pCube1Mat
+    second: {fileID: 2100000, guid: 7c29dcc54df1ccf4497a290799a1be63, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
