@@ -37,7 +37,7 @@ namespace Puzzles {
 
         // Start is called before the first frame update
         void Start() {
-
+            Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
         }
 
         // Update is called once per frame
@@ -236,6 +236,7 @@ namespace Puzzles {
                 Debug.Log("Puzzle has been completed!");
                 gameObject.SetActive(false);
                 Destroy(transform.parent.gameObject);
+                Fungus.Flowchart.BroadcastFungusMessage("EnablePlayerControls");
             }
         }
 
