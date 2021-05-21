@@ -103,7 +103,6 @@ namespace InteractionSystem {
         }
 
         public void OpenClickPuzzle() {
-            Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
             puzzleCamera.GetComponent<ClickPuzzle.ClickPuzzle>().StartPuzzle(gameObject);
         }
 

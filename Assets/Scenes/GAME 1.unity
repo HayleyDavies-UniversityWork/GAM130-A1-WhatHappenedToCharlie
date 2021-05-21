@@ -38725,6 +38725,10 @@ PrefabInstance:
       propertyPath: UVflashlight2
       value: 
       objectReference: {fileID: 904403462}
+    - target: {fileID: 1890262294, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 360885795981003680, guid: 6a24170e8e9edd04e82d7ca24ddc9bd7,
         type: 3}
       propertyPath: m_RootOrder

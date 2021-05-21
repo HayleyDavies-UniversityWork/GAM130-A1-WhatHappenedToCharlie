@@ -34,6 +34,7 @@ namespace ClickPuzzle {
             if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
                 Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
             } else {
+                Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
                 // previousCamera = previousCam;
                 previousCamera.enabled = false;
                 puzzleTrigger = trigger;
