@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Togglelight : MonoBehaviour { 
-
-
+public class Togglelight : MonoBehaviour {
 
     public GameObject UVflashlight;
     public GameObject UVflashlight2;
@@ -16,21 +14,16 @@ public class Togglelight : MonoBehaviour {
     public GameObject Markings6;
     public GameObject Markings7;
     public GameObject Markings8;
-    private bool on = false;
+    public bool on = false;
 
-    
-    void Start()
-    {
+    void Start() {
         //Toggle f key 
         //enable uvflashlight
         //enable markings
     }
 
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && !on)
-        {
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.F) && !on) {
             UVflashlight.SetActive(true);
             UVflashlight2.SetActive(true);
             Markings.SetActive(true);
@@ -41,9 +34,7 @@ public class Togglelight : MonoBehaviour {
             Markings6.SetActive(true);
             Markings7.SetActive(true);
             on = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.F) && on)
-        {
+        } else if (Input.GetKeyDown(KeyCode.F) && on) {
             UVflashlight.SetActive(false);
             UVflashlight2.SetActive(false);
             Markings.SetActive(false);

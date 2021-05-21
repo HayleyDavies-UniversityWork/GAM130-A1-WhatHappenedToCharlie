@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FungusCameraTrigger : MonoBehaviour {
     public string pickupMessage = "PickupQuestItem";
+    public string pickupMessage2 = "";
 
     //Needs renderer and collider attached, this won't work without them
     Collider col;
@@ -24,6 +25,9 @@ public class FungusCameraTrigger : MonoBehaviour {
         if (other.CompareTag("Player")) {
             // Disable the collider immediately to prevent this method triggering again.
             Flowchart.BroadcastFungusMessage(pickupMessage);
+            if (pickupMessage2 != "") {
+                Flowchart.BroadcastFungusMessage(pickupMessage2);
+            }
             //This is the default fungus message that will be shown, keeping it the same as pauls in case things brea
             Debug.Log($"{name}: {other.name}");
         }
