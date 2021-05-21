@@ -13,25 +13,25 @@ namespace ClickPuzzle {
         // the order, and objects that will be clicked
         public List<Clickable> clickOrder;
 
+        // the camera used before this one
+        public Camera previousCamera;
+
         public UnityEvent clickAction;
         public UnityEvent hoverAction;
 
         // the currently clicked objects
         public List<Clickable> currentClicks;
 
-        // the camera used before this one
-        private Camera previousCamera;
-
         private GameObject puzzleTrigger;
 
         private Canvas UI;
 
         string caller = "";
-        public void StartPuzzle(GameObject trigger, Camera previousCam) {
+        public void StartPuzzle(GameObject trigger) {
             if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
                 Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
             } else {
-                previousCamera = previousCam;
+                // previousCamera = previousCam;
                 previousCamera.enabled = false;
                 puzzleTrigger = trigger;
                 GetComponent<Camera>().enabled = true;
@@ -42,6 +42,7 @@ namespace ClickPuzzle {
 
                 puzzleTrigger.GetComponent<Collider>().enabled = false;
                 UI.enabled = true;
+                SetPlayerColliders(false);
             }
         }
 
@@ -90,7 +91,7 @@ namespace ClickPuzzle {
                         foreach (Clickable c in clickOrder) {
                             c.clickAction.Invoke();
                         }
-                        StartPuzzle(puzzleTrigger, previousCamera);
+                        StartPuzzle(puzzleTrigger);
                     }
                 }
             }
@@ -130,7 +131,8 @@ namespace ClickPuzzle {
 
             puzzleTrigger.GetComponent<Collider>().enabled = true;
             UI.enabled = false;
-
+            Fungus.Flowchart.BroadcastFungusMessage("EnablePlayerControls");
+            SetPlayerColliders(true);
         }
 
         public void ChangeMaterial(Material material) {
@@ -153,6 +155,18 @@ namespace ClickPuzzle {
                 } else if (caller == "hover") {
                     c.hoverAction.AddListener(() => c.ToggleParticles());
                 }
+            }
+        }
+
+        void SetPlayerColliders(bool enabled) {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            foreach (BoxCollider bc in player.GetComponents<BoxCollider>()) {
+                bc.enabled = enabled;
+            }
+
+            foreach (CharacterController cc in player.GetComponents<CharacterController>()) {
+                cc.enabled = enabled;
             }
         }
 
