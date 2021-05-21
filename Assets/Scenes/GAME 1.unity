@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -15313,8 +15313,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.39184618}
-  m_Center: {x: 0, y: 0, z: -0.3040769}
+  m_Size: {x: 6.298174, y: 1, z: 0.39184618}
+  m_Center: {x: -0.83325434, y: 0, z: -0.3040769}
 --- !u!23 &472455643
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33319,7 +33319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1235385215
 Transform:
   m_ObjectHideFlags: 0
@@ -33341,6 +33341,7 @@ Transform:
   - {fileID: 902917628}
   - {fileID: 1304542100}
   - {fileID: 1878051775}
+  - {fileID: 1707977592}
   m_Father: {fileID: 363363311}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 179.295, y: -180.155, z: -0.0020141602}
@@ -36014,7 +36015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1648367688}
+  selectedFlowchart: {fileID: 1880474149}
 --- !u!4 &1435238104
 Transform:
   m_ObjectHideFlags: 1
@@ -43750,6 +43751,114 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 576905896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1707977591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707977592}
+  - component: {fileID: 1707977596}
+  - component: {fileID: 1707977595}
+  - component: {fileID: 1707977594}
+  - component: {fileID: 1707977593}
+  m_Layer: 0
+  m_Name: LivingRoomComment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707977592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707977591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.643, y: 3.12, z: 0.795}
+  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1235385215}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707977593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707977591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b404eb26720d30844a5aaeb385621fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupMessage: WhatTheFuck
+  ren: {fileID: 0}
+--- !u!65 &1707977594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707977591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1707977595
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707977591}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1707977596
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707977591}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1709517788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45133,7 +45242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1778993348
 Transform:
   m_ObjectHideFlags: 0
@@ -46355,6 +46464,9 @@ GameObject:
   - component: {fileID: 1880474260}
   - component: {fileID: 1880474259}
   - component: {fileID: 1880474258}
+  - component: {fileID: 1880474274}
+  - component: {fileID: 1880474273}
+  - component: {fileID: 1880474272}
   m_Layer: 0
   m_Name: Story
   m_TagString: Untagged
@@ -46386,10 +46498,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1880474262}
-  selectedCommands:
-  - {fileID: 1880474259}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 1880474157}
   - {fileID: 1880474158}
@@ -46449,7 +46559,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -88.81131
     y: -270.78036
-    width: 111.33333
+    width: 110
     height: 40
   tint: {r: 0.356076, g: 0.7924528, b: 0.3252047, a: 1}
   useCustomTint: 1
@@ -46742,7 +46852,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 391.39795
     y: -160.11607
-    width: 109.33333
+    width: 107
     height: 40
   tint: {r: 0.8301887, g: 0.38768244, b: 0.77690065, a: 1}
   useCustomTint: 1
@@ -47302,7 +47412,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 549.0934
     y: -347.5433
-    width: 172.66666
+    width: 168
     height: 40
   tint: {r: 0.35579652, g: 0.26210397, b: 0.3584906, a: 1}
   useCustomTint: 1
@@ -47458,7 +47568,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 107.61494
     y: -343.32285
-    width: 214.66667
+    width: 211
     height: 40
   tint: {r: 0.9433962, g: 0.048949808, b: 0.048949808, a: 1}
   useCustomTint: 1
@@ -47579,7 +47689,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 136.5574
     y: -274.87402
-    width: 152.66666
+    width: 148
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -47642,7 +47752,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 364.03976
     y: -349.81958
-    width: 178.66667
+    width: 175
     height: 40
   tint: {r: 0.8301887, g: 0.38768244, b: 0.77690065, a: 1}
   useCustomTint: 1
@@ -47811,7 +47921,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 373.0843
     y: -292.7888
-    width: 139.33334
+    width: 137
     height: 40
   tint: {r: 0.8301887, g: 0.38768244, b: 0.77690065, a: 1}
   useCustomTint: 1
@@ -48006,7 +48116,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 351.38232
     y: -228.86044
-    width: 179.33333
+    width: 175
     height: 40
   tint: {r: 0.8301887, g: 0.38768244, b: 0.77690065, a: 1}
   useCustomTint: 1
@@ -48555,7 +48665,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 132.57394
     y: -215.41003
-    width: 162.66666
+    width: 158
     height: 40
   tint: {r: 0.22357048, g: 0.13069598, b: 0.8396226, a: 1}
   useCustomTint: 1
@@ -49544,7 +49654,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 587.62744
     y: -168.86044
-    width: 156.66666
+    width: 154
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -50010,7 +50120,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 585.62744
     y: -222.86044
-    width: 184.66667
+    width: 180
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -50206,7 +50316,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 574.62744
     y: -287.86044
-    width: 178
+    width: 174
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -50232,6 +50342,75 @@ MonoBehaviour:
   scope: 0
   key: BedroomState
   value: 0
+--- !u!114 &1880474272
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880474148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 182
+  indentLevel: 0
+  storyText: What the fuck
+  description: 
+  character: {fileID: 1942193509}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1880474273
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880474148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1880474274}
+  suppressBlockAutoSelect: 0
+  message: WhatTheFuck
+--- !u!114 &1880474274
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880474148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 142.62741
+    y: -156.86044
+    width: 129
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 181
+  blockName: WhatTheFuck
+  description: 
+  eventHandler: {fileID: 1880474273}
+  commandList:
+  - {fileID: 1880474272}
+  suppressAllAutoSelections: 0
 --- !u!1001 &1893417470
 PrefabInstance:
   m_ObjectHideFlags: 0
