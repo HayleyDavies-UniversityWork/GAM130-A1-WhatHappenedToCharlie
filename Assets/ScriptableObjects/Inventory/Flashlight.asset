@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Flashlight
   Description: It seems to light things up, what do you expect?
-  Icon: {fileID: 21300000, guid: 46f14334bb6ef4b48bd6ff6c6ae9b019, type: 3}
+  Icon: {fileID: 21300000, guid: ea8790e3ee23fdd448f8dd233bc8198a, type: 3}
