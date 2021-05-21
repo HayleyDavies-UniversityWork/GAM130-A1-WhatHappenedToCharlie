@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour {
             RunAnimations();
             transform.Rotate(0, Input.GetAxis("Horizontal") * speedRot * Time.deltaTime, 0);
             controller.Move(movement);
+        } else {
+            anim.SetFloat("Vertical", 0);
+            anim.SetFloat("Horizontal", 0);
         }
     }
 
