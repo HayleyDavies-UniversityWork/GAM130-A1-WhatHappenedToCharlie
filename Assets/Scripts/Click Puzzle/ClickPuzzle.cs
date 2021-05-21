@@ -27,6 +27,9 @@ namespace ClickPuzzle {
         private Canvas UI;
 
         string caller = "";
+
+        RigidbodyConstraints playerConstraints;
+
         public void StartPuzzle(GameObject trigger) {
             if (!Inventory.Contents.ContainsValue(requiredItem) && requiredItem != null) {
                 Fungus.Flowchart.BroadcastFungusMessage("ItemNotOwned");
@@ -48,6 +51,7 @@ namespace ClickPuzzle {
 
         // Start is called before the first frame update
         void Start() {
+            playerConstraints = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().constraints;
             // create a new list for the current clicks
             currentClicks = new List<Clickable>(clickOrder.Count);
             UI = GetComponentInChildren<Canvas>();
@@ -161,8 +165,16 @@ namespace ClickPuzzle {
         void SetPlayerColliders(bool enabled) {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+            if (enabled) {
+                player.GetComponent<Rigidbody>().constraints = playerConstraints;
+            } else {
+                player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+
             foreach (BoxCollider bc in player.GetComponents<BoxCollider>()) {
-                bc.enabled = enabled;
+                if (bc.isTrigger == true) {
+                    bc.enabled = enabled;
+                }
             }
 
             foreach (CharacterController cc in player.GetComponents<CharacterController>()) {
