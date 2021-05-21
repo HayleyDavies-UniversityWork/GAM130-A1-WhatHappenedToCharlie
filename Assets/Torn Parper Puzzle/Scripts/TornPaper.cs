@@ -39,7 +39,7 @@ public class TornPaper : MonoBehaviour {
 
         if (Score >= ImageSize * ImageSize) {
             Fungus.Flowchart.BroadcastFungusMessage("Torn Paper Puzzle Complete");
-            Destroy(this.gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
     public void RestartPuzzle() {

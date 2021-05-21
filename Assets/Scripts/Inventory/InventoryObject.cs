@@ -7,9 +7,6 @@ namespace InventorySystem {
         // the item which will be added to the inventory of the player
         public InventoryItem item;
 
-        // the interactable range of the physical object
-        public float interactableRange = 0.1f;
-
         /// <summary>
         /// Start is called on the frame when a script is enabled just before
         /// any of the Update methods is called the first time.

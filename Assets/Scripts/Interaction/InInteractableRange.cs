@@ -8,7 +8,11 @@ namespace InteractionSystem {
 
         void OnTriggerEnter(Collider other) {
             if (other.CompareTag("Interactable")) {
-                other.GetComponent<MeshRenderer>().material = highlightMaterial;
+                Material[] materials = other.GetComponent<MeshRenderer>().materials;
+                for (int i = 0; i < materials.Length; i++) {
+                    materials[i] = highlightMaterial;
+                }
+                other.GetComponent<MeshRenderer>().materials = materials;
             }
         }
 

@@ -22,6 +22,11 @@ namespace InteractionSystem {
 
         // Update is called once per frame
         void Update() {
+            if (currentCollider != null) {
+                canvas.enabled = true;
+            } else {
+                canvas.enabled = false;
+            }
             // if the interact button is pressed
             if (Input.GetButtonUp("Interact") && currentCollider != null && interactable) {
                 // run the interaction script
@@ -35,14 +40,18 @@ namespace InteractionSystem {
         /// Interact handles the interactions of the player
         /// </summary>
         void Interact() {
-            canvas.enabled = false;
             // if the current collider has been set
             if (currentCollider != null) {
                 // get the tag of the collider
                 currentCollider.GetComponent<Interactable>().interact.Invoke();
+                PlayAnimation();
             }
+        }
 
-            PlayAnimation();
+        void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Interactable") && currentCollider != null) {
+                canvas.enabled = true;
+            }
         }
 
         /// <summary>
@@ -53,7 +62,6 @@ namespace InteractionSystem {
             if (other.CompareTag("Interactable")) {
                 // set the current collider collider triggered
                 currentCollider = other;
-                canvas.enabled = true;
             }
         }
 
@@ -74,8 +82,7 @@ namespace InteractionSystem {
             anim.SetTrigger("Pickup");
         }
 
-        public void SetBool(bool var)
-        {
+        public void SetBool(bool var) {
             interactable = var;
         }
     }

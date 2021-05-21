@@ -28,13 +28,16 @@ namespace InteractionSystem {
 
         public Camera puzzleCamera;
 
-        public bool StartOnPlay = false;
+        public bool startOnPlay = false;
 
-        private Material defaultMaterial;
+        private Material[] defaultMaterials;
+
+        public string fungusMessage = "";
 
         // Start is called before the first frame update
         void Start() {
-            defaultMaterial = GetComponent<Renderer>().material;
+            defaultMaterials = GetComponent<Renderer>().materials;
+            interact += DefaultInteraction;
             switch (interactionType) {
                 case InteractionType.Pickup:
                     interact += PickupInteraction;
@@ -53,9 +56,14 @@ namespace InteractionSystem {
                     break;
             }
 
-            if (StartOnPlay) {
+            if (startOnPlay) {
                 interact.Invoke();
             }
+        }
+
+        void DefaultInteraction() {
+            if (fungusMessage != "")
+                Flowchart.BroadcastFungusMessage(fungusMessage);
         }
 
         /// <summary>
@@ -67,8 +75,10 @@ namespace InteractionSystem {
             // get the item
             InventoryItem item = GetComponent<InventoryObject>().item;
 
-            flowchart.SetStringVariable("LastItemPickup", item.Name.ToLower());
-            Flowchart.BroadcastFungusMessage("PickedUpItem");
+            if (fungusMessage == "") {
+                flowchart.SetStringVariable("LastItemPickup", item.Name.ToLower());
+                Flowchart.BroadcastFungusMessage("PickedUpItem");
+            }
 
             // add the item to the inventory
             Inventory.Add(item);
@@ -78,6 +88,7 @@ namespace InteractionSystem {
         }
 
         void OpenPuzzleInteraction() {
+            Fungus.Flowchart.BroadcastFungusMessage("DisablePlayerControls");
             puzzle.SetActive(true);
         }
 
@@ -96,7 +107,7 @@ namespace InteractionSystem {
         }
 
         public void ResetMaterial() {
-            GetComponent<Renderer>().material = defaultMaterial;
+            GetComponent<Renderer>().materials = defaultMaterials;
         }
     }
 }
